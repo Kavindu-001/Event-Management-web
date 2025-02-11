@@ -1,0 +1,74 @@
+/* Styles for the header component */
+
+/* General reset for margin and padding */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f7f7f7;
+    
+  }
+  
+  /* Style the header container */
+  .menuItems {
+    display: flex;
+    justify-content: center; /* Center the menu horizontally */
+    align-items: center; /* Center items vertically */
+    background-color:#f7f7f7; /* Dark background color */
+    padding: 10px 0; /* Space around the menu */
+    margin: 0; /* Remove default margin */
+    list-style: none; /* Remove default bullet points */
+    border-radius: 0;
+    position: absolute; /* Fix the menu at the top of the screen */
+    top: 0; /* Position at the top */
+    width: 100%; /*Make it span the full width of the screen */
+    /* Make sure it's on top of other elements */
+
+  }
+  
+  /* Style individual menu items */
+  .menuItems li {
+    margin: 0 20px; /* Space between menu items */
+    
+    
+    
+  }
+  
+  /* Style the links inside the menu */
+  .menuItems a {
+    text-decoration: none; /* Remove underline */
+    color: rgb(8, 8, 8); /* Text color */
+    font-size: 18px; /* Font size */
+    font-weight: bold; /* Make the text bold */
+    transition: color 0.3s ease; /* Smooth hover effect */
+    
+  }
+  
+  /* Change color on hover */
+  .menuItems a:hover {
+    color: #0004ff; /* Highlight color */
+  }
+  
+  /* Responsive design for smaller screens */
+  @media (max-width: 768px) {
+    .menuItems {
+      flex-direction: column; /* Stack menu items vertically */
+      padding: 15px; /* Adjust padding */
+    }
+  
+    .menuItems li {
+      margin: 10px 0; /* Space between items in vertical layout */
+      border-radius: 6px;
+    }
+  }
+  
+  /* Additional styles for the header container */
+
+  
+ .avatar{
+  width:40px;
+  height:40px;
+  margin-right: 10px;
+  border-radius: 50%;
+  object-fit:cover;
+ }
