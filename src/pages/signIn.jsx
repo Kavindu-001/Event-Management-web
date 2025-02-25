@@ -1,81 +1,87 @@
-import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom'; // Import Link here
-import axios from 'axios';
-import "../styles/SignIn.css"
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import "../styles/SignIn.css"; // Add styles
 
 const SignIn = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [values, setValues] = useState({ email: "", password: "" });
+  const [error, setError] = useState("");
   const navigate = useNavigate();
 
-  // Temporary credentials for demo purposes
-  const tempCredentials = {
-    email: 'admin@example.com',
-    password: 'password123',
+  // Hardcoded User Credentials (Temporary for Testing)
+  const users = [
+    { email: "admin@eventia.com", password: "Admin@123", role: "Admin" },
+    { email: "organizer@eventia.com", password: "Organizer@123", role: "EventOrganizer" },
+    { email: "artist@eventia.com", password: "Artist@123", role: "Artist" },
+    { email: "band@eventia.com", password: "Band@123", role: "Bands" },
+    { email: "consumer@eventia.com", password: "Consumer@123", role: "Consumer" },
+    { email: "security@eventia.com", password: "Security@123", role: "SecurityTeam" },
+    { email: "sponsor@eventia.com", password: "Sponsor@123", role: "Sponsor" },
+    { email: "designer@eventia.com", password: "Designer@123", role: "Designer" },
+  ];
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    setError(""); // Clear previous errors
+
+    const user = users.find(
+      (u) => u.email === values.email && u.password === values.password
+    );
+
+    if (user) {
+      localStorage.setItem("token", "logged-in");
+      localStorage.setItem("role", user.role);
+      redirectToDashboard(user.role);
+    } else {
+      setError("Invalid credentials!");
+    }
   };
 
-  const handleSignIn = async (e) => {
-    e.preventDefault();
-    // Check against temporary credentials
-    if (email === tempCredentials.email && password === tempCredentials.password) {
-      alert('Login successful (temporary credentials)');
-      localStorage.setItem('auth', JSON.stringify({ email }));
-      navigate('/sideNavBar'); // Redirect to dashboard
-      return;
+  // Redirect user based on role
+  const redirectToDashboard = (role) => {
+    switch (role) {
+      case "Admin":
+        navigate("/admin-dashboard");
+        break;
+      case "EventOrganizer":
+        navigate("/event-organizer-dashboard");
+        break;
+      case "Artist":
+        navigate("/artist-dashboard");
+        break;
+      case "Bands":
+        navigate("/bands-dashboard");
+        break;
+      case "Consumer":
+        navigate("/consumer-dashboard");
+        break;
+      case "SecurityTeam":
+        navigate("/security-dashboard");
+        break;
+      case "Sponsor":
+        navigate("/sponsor-dashboard");
+        break;
+      case "Designer":
+        navigate("/designer-dashboard");
+        break;
+      default:
+        navigate("/");
     }
-
-
-    try {
-      const response = await axios.post('/api/auth/signin', { email, password });
-      if (response.data.success) {
-        localStorage.setItem('auth', JSON.stringify(response.data));
-        navigate('/sideNavBar'); // Redirect to dashboard
-      }
-    } catch (error) {
-      console.error('Login failed:', error);
-    }
+    window.location.reload();
   };
 
   return (
-    <div className="sign-in-container">
-      <h2>Sign In</h2>
-      <form onSubmit={handleSignIn}>
-        <div>
-          <label>Email</label>
-          <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-        </div>
-        <div>
-          <label>Password</label>
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </div>
-        <button type="submit">Sign In</button>
+    <div className="login-container">
+      <h2>🔑 Eventia Login</h2>
+      {error && <p className="error-text">{error}</p>}
+      <form onSubmit={handleSubmit}>
+        <input type="email" placeholder="Email" required 
+          onChange={(e) => setValues({ ...values, email: e.target.value })} />
+        <input type="password" placeholder="Password" required 
+          onChange={(e) => setValues({ ...values, password: e.target.value })} />
+        <button type="submit">Login</button>
       </form>
-
-      {/* Links to Forgot Password and Sign Up */}
-      <div className="links-container">
-        <p>
-          Forgot your password? <Link to="/ForgotPassword">Click here</Link>
-        </p>
-        <p>
-          Don't have an account? <Link to="/SignUp">Sign Up</Link>
-        </p>
-      </div>
     </div>
   );
 };
 
 export default SignIn;
-
-
-
-

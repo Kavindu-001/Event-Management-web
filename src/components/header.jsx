@@ -5,13 +5,14 @@ const header = () => {
 
   return (
     <div className = "header-container">
-      <ul className = "menuItems">
-        <li><Link to="/sideNavBar">Home</Link></li>
-        <li><Link to="/about">About</Link></li>
-        <li><Link to="/contact">Contact</Link></li>
-        <li><Link to="/">Log Out</Link></li>
-        
-      </ul>
+      <a href='/LandingPage' className='header-link'>Eventia</a>
+
+      <div className='header-links'>
+        <Link to='/'>Home</Link>
+        <Link to='/events'>Events</Link>
+        <Link to='/about'>About</Link>
+        <Link to='/contact'>Contact</Link>
+      </div>
 
     </div>
  
