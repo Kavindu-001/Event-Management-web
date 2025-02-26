@@ -5,7 +5,7 @@ const header = () => {
 
   return (
     <div className = "header-container">
-      <a href='/LandingPage' className='header-link'>Eventia</a>
+      <a href='/' className='header-link'>Eventia</a>
 
       <div className='header-links'>
         <Link to='/'>Home</Link>
@@ -13,6 +13,11 @@ const header = () => {
         <Link to='/about'>About</Link>
         <Link to='/contact'>Contact</Link>
       </div>
+      
+      <div className='login-btn'>
+        <Link to='/SignIn'>SignIn</Link>
+      </div>
+
 
     </div>
  
