@@ -10,7 +10,7 @@ import ConsumersDashboard from './pages/DashBoards/ConsumersDashboard'
 import SecurityTeamDashboard from './pages/DashBoards/SecurityTeamDashboard'
 import SponsorsDashboard from './pages/DashBoards/SponsorsDashboard'
 import DesignersDashboard from './pages/DashBoards/DesignersDashboard'
-import PrivateRoute from './components/PrivateRoute'
+import ProtectRoute from './components/ProtectRoute'
 
 
 const App = () => {
@@ -23,35 +23,35 @@ const App = () => {
         <Route path="/SignIn" element={<SignIn />} />
 
         {/*Role-Based Routing and protected routes*/}
-        <Route element ={<PrivateRoute allowedRoles={["Admin"]}/>}>
+        <Route element ={<ProtectRoute allowedRoles={["Admin"]}/>}>
         <Route path="/AdminDashboard" element={ <AdminDashboard /> } />
         </Route>
 
-        <Route element ={<PrivateRoute allowedRoles={["EventOrganizer"]}/>}>
+        <Route element ={<ProtectRoute allowedRoles={["EventOrganizer"]}/>}>
         <Route path="/EventOrganizerDashboard" element={ <EventOrganizerDashboard /> } />
         </Route>
 
-        <Route element ={<PrivateRoute allowedRoles={["Artist"]}/>}>
+        <Route element ={<ProtectRoute allowedRoles={["Artist"]}/>}>
         <Route path="/ArtistDashboard" element={<ArtistDashboard /> } />
         </Route>
 
-        <Route element ={<PrivateRoute allowedRoles={["Bands"]}/>}>
+        <Route element ={<ProtectRoute allowedRoles={["Bands"]}/>}>
         <Route path="/BandDashboard" element={<BandDashboard /> } />
         </Route>
 
-        <Route element ={<PrivateRoute allowedRoles={["Consumer"]}/>}>
+        <Route element ={<ProtectRoute allowedRoles={["Consumer"]}/>}>
         <Route path="/ConsumerDashboard" element={<ConsumersDashboard />} />
         </Route>
 
-        <Route element ={<PrivateRoute allowedRoles={["SecurityTeam"]}/>}>
+        <Route element ={<ProtectRoute allowedRoles={["SecurityTeam"]}/>}>
         <Route path="/SecurityDashboard" element={<SecurityTeamDashboard />} />
         </Route>
         
-        <Route element ={<PrivateRoute allowedRoles={["Sponsor"]}/>}>
+        <Route element ={<ProtectRoute allowedRoles={["Sponsor"]}/>}>
         <Route path="/SponsorDashboard" element={<SponsorsDashboard />} />
         </Route>
         
-        <Route element ={<PrivateRoute allowedRoles={["Designer"]}/>}>
+        <Route element ={<ProtectRoute allowedRoles={["Designer"]}/>}>
         <Route path="/DesignerDashboard" element={<DesignersDashboard />} />        
         </Route>
        

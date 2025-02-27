@@ -51,8 +51,8 @@
     color: #eb6308ef;
 }
 .login-btn {
-    background: #1d8b38b6 !important;
-    color: rgba(16, 240, 117, 0.623) !important;
+    background: #0222d4 !important;
+    color: rgb(0, 0, 0) !important;
     padding: 12px 20px !important;
     border: none    !important;
     cursor: pointer !important;
@@ -64,9 +64,9 @@
 
 }
 
-.login-btn:hover{
-    background: #1d8b38;
-    color: white;
+.login-btn:hover a{
+    
+    color: #eb6308ef;
 }
 .login-btn a{
     color: white;
