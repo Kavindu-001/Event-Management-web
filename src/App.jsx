@@ -1,16 +1,16 @@
 import React from 'react'
 import { BrowserRouter as Router, Routes, Route, } from 'react-router-dom'
 import LandingPage from './pages/LandingPage'
-import SignIn from './pages/SignIn'
-import AdminDashboard from './pages/DashBoards/AdminDashboard'
-import EventOrganizerDashboard from './pages/DashBoards/EventOrganizerDashboard'
-import ArtistDashboard from './pages/DashBoards/ArtistDashboard'
-import BandDashboard from './pages/DashBoards/BandDashboard'
-import ConsumersDashboard from './pages/DashBoards/ConsumersDashboard'
-import SecurityTeamDashboard from './pages/DashBoards/SecurityTeamDashboard'
-import SponsorsDashboard from './pages/DashBoards/SponsorsDashboard'
-import DesignersDashboard from './pages/DashBoards/DesignersDashboard'
-import ProtectRoute from './components/ProtectRoute'
+import SignIn from '../src/pages/signIn'
+import AdminDashboard from '../src/pages/Dashboards/AdminDashboard'
+import EventOrganizerDashboard from '../src/pages/Dashboards/EventOrganizerDashboard'
+import ArtistDashboard from '../src/pages/Dashboards/ArtistDashboard'
+import BandDashboard from '../src/pages/Dashboards/BandDashboard'
+import ConsumersDashboard from '../src/pages/Dashboards/ConsumersDashboard'
+import SecurityTeamDashboard from '../src/pages/Dashboards/SecurityTeamDashboard'
+import SponsorsDashboard from '../src/pages/Dashboards/SponsorsDashboard'
+import DesignersDashboard from '../src/pages/Dashboards/DesignersDashboard'
+import ProtectRoute from '../src/components/ProtectRoute'
 
 
 const App = () => {
@@ -40,19 +40,19 @@ const App = () => {
         </Route>
 
         <Route element ={<ProtectRoute allowedRoles={["Consumer"]}/>}>
-        <Route path="/ConsumerDashboard" element={<ConsumersDashboard />} />
+        <Route path="/ConsumersDashboard" element={<ConsumersDashboard />} />
         </Route>
 
         <Route element ={<ProtectRoute allowedRoles={["SecurityTeam"]}/>}>
-        <Route path="/SecurityDashboard" element={<SecurityTeamDashboard />} />
+        <Route path="/SecurityTeamDashboard" element={<SecurityTeamDashboard />} />
         </Route>
         
         <Route element ={<ProtectRoute allowedRoles={["Sponsor"]}/>}>
-        <Route path="/SponsorDashboard" element={<SponsorsDashboard />} />
+        <Route path="/SponsorsDashboard" element={<SponsorsDashboard />} />
         </Route>
         
         <Route element ={<ProtectRoute allowedRoles={["Designer"]}/>}>
-        <Route path="/DesignerDashboard" element={<DesignersDashboard />} />        
+        <Route path="/DesignersDashboard" element={<DesignersDashboard />} />        
         </Route>
        
 

@@ -40,33 +40,32 @@ const SignIn = () => {
   const redirectToDashboard = (role) => {
     switch (role) {
       case "Admin":
-        navigate("/admin-dashboard");
+        navigate("/AdminDashboard");
         break;
       case "EventOrganizer":
-        navigate("/event-organizer-dashboard");
+        navigate("/EventOrganizerDashboard");
         break;
       case "Artist":
-        navigate("/artist-dashboard");
+        navigate("/ArtistDashboard");
         break;
       case "Bands":
-        navigate("/bands-dashboard");
+        navigate("/BandDashboard");
         break;
       case "Consumer":
-        navigate("/consumer-dashboard");
+        navigate("/ConsumersDashboard");
         break;
       case "SecurityTeam":
-        navigate("/security-dashboard");
+        navigate("/SecurityTeamDashboard");
         break;
       case "Sponsor":
-        navigate("/sponsor-dashboard");
+        navigate("/SponsorsDashboard");
         break;
       case "Designer":
-        navigate("/designer-dashboard");
+        navigate("/DesignersDashboard");
         break;
       default:
         navigate("/");
     }
-    window.location.reload();
   };
 
   return (
@@ -74,11 +73,20 @@ const SignIn = () => {
       <h2>🔑 Eventia Login</h2>
       {error && <p className="error-text">{error}</p>}
       <form onSubmit={handleSubmit}>
-        <input type="email" placeholder="Email" required 
-          onChange={(e) => setValues({ ...values, email: e.target.value })} />
-        <input type="password" placeholder="Password" required 
-          onChange={(e) => setValues({ ...values, password: e.target.value })} />
+        <input
+          type="email"
+          placeholder="Email"
+          required
+          onChange={(e) => setValues({ ...values, email: e.target.value })}
+        />
+        <input
+          type="password"
+          placeholder="Password"
+          required
+          onChange={(e) => setValues({ ...values, password: e.target.value })}
+        />
         <button type="submit">Login</button>
+        <p>Don't have an account? <a href="/SignUp">Sign Up</a></p>
       </form>
     </div>
   );
