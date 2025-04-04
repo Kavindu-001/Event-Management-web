@@ -9,9 +9,9 @@ const header = () => {
 
       <div className='header-links'>
         <Link to='/'>Home</Link>
-        <Link to='/events'>Events</Link>
-        <Link to='/about'>About</Link>
-        <Link to='/contact'>Contact</Link>
+        <Link to='/Events'>Events</Link>
+        <Link to='/About'>About</Link>
+        <Link to='/Contact'>Contact</Link>
       </div>
       
       <div className='login-btn'>

@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles/SignIn.css"; // Add styles
-
 const SignIn = () => {
   const [values, setValues] = useState({ email: "", password: "" });
   const [error, setError] = useState("");
@@ -70,7 +69,8 @@ const SignIn = () => {
 
   return (
     <div className="login-container">
-      <h2>🔑 Eventia Login</h2>
+      <card className="card-login">
+      <h2> Eventia Login</h2>
       {error && <p className="error-text">{error}</p>}
       <form onSubmit={handleSubmit}>
         <input
@@ -86,8 +86,9 @@ const SignIn = () => {
           onChange={(e) => setValues({ ...values, password: e.target.value })}
         />
         <button type="submit">Login</button>
-        <p>Don't have an account? <a href="/SignUp">Sign Up</a></p>
+        <p>Don't have an account? <a href="/SignUp" className="signup-link">Sign Up</a></p>
       </form>
+      </card>
     </div>
   );
 };

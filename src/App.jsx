@@ -2,6 +2,7 @@ import React from 'react'
 import { BrowserRouter as Router, Routes, Route, } from 'react-router-dom'
 import LandingPage from './pages/LandingPage'
 import SignIn from '../src/pages/signIn'
+import SignUp from '../src/pages/SignUp'
 import AdminDashboard from '../src/pages/Dashboards/AdminDashboard'
 import EventOrganizerDashboard from '../src/pages/Dashboards/EventOrganizerDashboard'
 import ArtistDashboard from '../src/pages/Dashboards/ArtistDashboard'
@@ -11,7 +12,9 @@ import SecurityTeamDashboard from '../src/pages/Dashboards/SecurityTeamDashboard
 import SponsorsDashboard from '../src/pages/Dashboards/SponsorsDashboard'
 import DesignersDashboard from '../src/pages/Dashboards/DesignersDashboard'
 import ProtectRoute from '../src/components/ProtectRoute'
-
+import Events from '../src/pages/Events'
+import About from '../src/pages/About'
+import Contact from '../src/pages/Contact'
 
 const App = () => {
     
@@ -21,6 +24,10 @@ const App = () => {
         {/*Public Routes*/}
         <Route path="/" element={<LandingPage />} />
         <Route path="/SignIn" element={<SignIn />} />
+        <Route path ="/SignUp" element={<SignUp />} />
+        <Route path="/Events" element={<Events />} />
+        <Route path="/About" element={<About />} />
+        <Route path="/Contact" element={<Contact />} />
 
         {/*Role-Based Routing and protected routes*/}
         <Route element ={<ProtectRoute allowedRoles={["Admin"]}/>}>

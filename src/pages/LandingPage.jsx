@@ -15,29 +15,22 @@ const LandingPage = () => {
         <Header />
       </div>
 
-      <div className="hero-section"
-       style={{
-        backgroundImage: `url(${start2})`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundAttachment: 'fixed',
-        height: '100vh',
-        textAlign: 'center',
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'center',
-        alignItems: 'center',
-        color: '#000',
-        
 
-        }}>
-      </div>  
+      <div>
+        <img src={start2} alt="Landing Page" className="landing-image-hero" />
+      </div>
+
+      <div className="landing-content">
+        <h1>Welcome to Eventia</h1>
+        <p>Your one-stop solution for all event management needs.</p>
+        <p className="login-content-para">Join us to explore a world of events!</p>
+      </div>    
 
 
      
       
         
-      </div>
+    </div>
   );
 };
 
