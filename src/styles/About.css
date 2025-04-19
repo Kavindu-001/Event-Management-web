@@ -1,0 +1,98 @@
+/* General page layout */
+.about-hero {
+    margin-top: 1200px;
+    background-color: #f7f7f7;
+    text-align: center;
+    padding: 60px 20px;
+    color: #333;
+  }
+  
+  .about-hero h1 {
+    font-size: 3rem;
+    margin-bottom: 15px;
+    color: #1e293b;
+  }
+  
+  .about-hero p {
+    font-size: 1.2rem;
+    color: #64748b;
+  }
+  
+  /* About sections */
+  .about-section {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 20px;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+  }
+  
+  .about-section h2 {
+    font-size: 2rem;
+    color: #0f172a;
+    margin-bottom: 15px;
+    border-left: 5px solid #3b82f6;
+    padding-left: 15px;
+  }
+  
+  .about-section p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #475569;
+  }
+  
+  .about-section ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .about-section li {
+    padding: 10px 0;
+    font-size: 1rem;
+    color: #334155;
+    display: flex;
+    align-items: center;
+  }
+  
+  .about-section li::before {
+    content: "✔️";
+    margin-right: 10px;
+    color: #10b981;
+  }
+  
+  /* CTA Section */
+  .cta-section {
+    background-color: #3b82f6;
+    color: #ffffff;
+    text-align: center;
+    padding: 50px 20px;
+    margin-top: 50px;
+  }
+  
+  .cta-section h3 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+  }
+  
+  .cta-section p {
+    font-size: 1.2rem;
+    margin-bottom: 25px;
+  }
+  
+  .cta-section button {
+    background-color: #ffffff;
+    color: #3b82f6;
+    font-weight: bold;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .cta-section button:hover {
+    background-color: #e0f2fe;
+  }
+  

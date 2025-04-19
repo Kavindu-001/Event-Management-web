@@ -8,7 +8,7 @@ body {
 .landing-container {
   text-align: center;
   padding: 0;
-  margin-top: 550px;
+  margin-top: 1800px;
   position: relative; /* Ensure content is positioned relative to the video */
   overflow: hidden; /* Prevent content overflow */
 }
@@ -124,4 +124,50 @@ header {
 .event-category-card h2 {
   font-size: 1.5rem;
   margin-bottom: 10px;
+}
+
+.intro-about-user-container{
+  
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: auto;
+  background-color: #ffffff;
+  padding: 20px;
+  margin-top: 20px;
+  z-index: 1;
+}
+
+.intro-about-user-image{
+  display: flex;
+  justify-content: left;
+  width: 30%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+}
+
+.intro-about-user-para{
+  display: flex;
+  justify-content:center;
+  width: 70%;
+  height: auto;
+  border-radius: 10px;
+  margin-top: 50px;
+}
+
+.intro-about-user-title{
+  display: flex;
+
+  font-size: 2rem;
+  margin-bottom: 10px;
+  color: #612535;
+}
+.intro-about-user-para{
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+  color: #534d5eb0;
 }

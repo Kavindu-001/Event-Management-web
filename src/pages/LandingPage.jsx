@@ -9,6 +9,8 @@ import Consumers1 from "../assets/Consumers1.jpg"; // Image for Consumers Catego
 import Consumers2 from "../assets/Consumers2.jpg"; // Image for Consumers Category
 import security1 from "../assets/security1.jpg"; // Image for Security Category
 import sponsor1 from "../assets/sponsor1.jpg"; // Image for Security Category
+import Designers1 from "../assets/Designers1.jpg"; // Image for Designers Category
+import User1 from "../assets/User1.png"; // Image for Users Category
 import Footer from "../components/Footer";
 
 const LandingPage = () => {
@@ -172,7 +174,7 @@ const LandingPage = () => {
               <CardMedia
                 component="img"
                 height="140"
-                image={sponsor1}
+                image={Designers1}
                 alt="Designers"
               />
               <CardContent>
@@ -180,15 +182,33 @@ const LandingPage = () => {
                  Designers
                 </Typography>
                 <Typography variant="body2" color="text.secondary"> 
-                  Our sponsors are an integral part of our events. 
-                  They provide the necessary funding and support to make our events possible. 
-                  We work closely with our sponsors to ensure that their brand is represented in the best possible light. 
-                  Our sponsors are carefully selected to align with our values and mission, and we are proud to partner with them.
+                  We provide the best designers for your events. 
+                  Our designers are well-trained and experienced in all aspects of event design, from branding to lighting and sound. 
+                  We work closely with our clients to ensure that their vision for their event is realized. 
+                  
                 </Typography>
               </CardContent>
             </CardActionArea>
           </Card>
       </div>
+      </div>
+      <div className="intro-about-user-container">
+        <h1 className="intro-about-user-title"> Who are the users?</h1>
+        <img src={User1} alt="User" className="intro-about-user-image" />
+
+        <p className="intro-about-user-para">
+          Whether you're an event organizzer,artist, band, consumers, designers, sponsors, security teams, or just someone looking to attend unforgettable experiences, Eventia is the platform built just for you.
+          Our mission is to connect all the key roles in the event industry through one powerful, user-friendly platform.
+          From planning to promoting and participating, users can easily manage their events, discover exciting opportuninties, collaborate with talent, and book essential services-all in one place.
+          <br />
+          As we grow, Eventia aims to become Sri Lanka's #1 event management ecosysytem, supporting both small and large-scale events.
+          In the future, wel plan to introduce smart recommendations, AI-based planning tools, and real-time analytics to help our users elevate their event game even further.
+          <br />
+          Join us and be part of shaping the future of events, With Eventia, every great event starts here.
+
+
+        </p>
+
       </div>
 
       <Footer />
