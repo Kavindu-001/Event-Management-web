@@ -10,7 +10,7 @@ const Footer = () => {
         <ul className="footer-links">
           <li><Link href="/About" color="inherit" underline="hover">About</Link></li>
           <li><Link href="/Contact" color="inherit" underline="hover">Contact</Link></li>
-          <li><Link href="#privacy" color="inherit" underline="hover">Privacy Policy</Link></li>
+          <li><Link href="/PrivacyPolicy" color="inherit" underline="hover">Privacy Policy</Link></li>
         </ul>
       </div>
     </footer>

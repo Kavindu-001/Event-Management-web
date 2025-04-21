@@ -2,6 +2,7 @@ import React from 'react'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 import '../styles/About.css'
+import { Link } from 'react-router-dom'
 const About = () => {
   return (
     <div>
@@ -52,8 +53,10 @@ const About = () => {
 
         <div className="cta-section">
           <h3>Ready to be part of something big?</h3>
-          <p>Sign up now and take your event journey to the next level with Eventia!</p>
-          <button>Get Started</button>
+          <p>Sign In now and take your event journey to the next level with Eventia!</p>
+          <Link to="/signIn">
+            <button>Get Started</button>
+          </Link>
         </div>
         
 

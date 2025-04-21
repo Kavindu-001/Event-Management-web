@@ -1,0 +1,120 @@
+.contact-container {
+  margin-top: 780px;
+  background-color: #ffffff;
+  }
+  
+  .contact-hero {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  
+  .contact-hero h1 {
+    font-size: 3rem;
+    color: #1e293b;
+  }
+  
+  .contact-hero p {
+    color: #64748b;
+    font-size: 1.2rem;
+  }
+  
+  .contact-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+    max-width: 1000px;
+    margin: auto;
+  }
+  
+  .contact-form,
+  .contact-info {
+    background: #eceff3;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+    flex: 1 1 400px;
+    
+  }
+  
+  .contact-form h2,
+  .contact-info h2 {
+    margin-bottom: 20px;
+    color: #1e293b;
+  }
+  
+  .contact-form input,
+  .contact-form textarea {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    font-size: 1rem;
+  }
+  
+  .contact-form button {
+    background-color: #3b82f6;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .contact-form button:hover {
+    background-color: #2563eb;
+  }
+  
+  .contact-info p {
+    margin-bottom: 12px;
+    color: #475569;
+  }
+  
+  .social-icons a {
+    display: inline-block;
+    margin-right: 15px;
+    font-size: 1.5rem;
+    text-decoration: none;
+  }
+  
+  .social-media-icon{
+    background-color: #ffffff;
+    border-radius: 0%;
+    padding: 10px;
+    height: 25px;
+    width: 25px;
+    margin-top: -5px;
+  }
+
+  .contact-map {
+    margin-top: 30px;
+    text-align: center;
+    padding: 20px;
+    background-color: #f9f9f9; /* Light background for contrast */
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+  }
+  
+  .contact-map h2 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    color: #333; /* Darker text for better readability */
+  }
+  
+  .contact-map iframe {
+    width: 100%; /* Make the map responsive */
+    max-width: 800px; /* Limit the maximum width */
+    height: 450px; /* Set a consistent height */
+    border: none; /* Remove the default border */
+    border-radius: 10px; /* Add rounded corners */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+    margin: 0 auto; /* Center the map */
+    display: block; /* Ensure the iframe behaves as a block element */
+  }
+
+  .contact-footer{
+    margin-top: 100px; /* Push the footer to the bottom */
+  }

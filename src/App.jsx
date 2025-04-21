@@ -15,6 +15,7 @@ import ProtectRoute from '../src/components/ProtectRoute'
 import Events from '../src/pages/Events'
 import About from '../src/pages/About'
 import Contact from '../src/pages/Contact'
+import PrivacyPolicy from './pages/PrivacyPolicy'
 
 const App = () => {
     
@@ -28,6 +29,7 @@ const App = () => {
         <Route path="/Events" element={<Events />} />
         <Route path="/About" element={<About />} />
         <Route path="/Contact" element={<Contact />} />
+        <Route path="/PrivacyPolicy" element={<PrivacyPolicy />} />
 
         {/*Role-Based Routing and protected routes*/}
         <Route element ={<ProtectRoute allowedRoles={["Admin"]}/>}>
