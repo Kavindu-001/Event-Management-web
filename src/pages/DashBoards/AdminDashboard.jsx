@@ -1,7 +1,9 @@
 import React from 'react';
 import Sidebar from '../../components/Sidebar'; // Import Sidebar component
 import '../../styles/DashboardsCss/AdminDashboard.css'; // Import CSS for styling
+// import SharedCalendar from '../../components/SharedCalendar'; // Import SharedCalendar component
 import { LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip, BarChart, Bar, PieChart, Pie, Cell } from 'recharts'; // Import Recharts components
+
 
 const userGrowthData = [
   { name: 'Jan', users: 400 },
@@ -117,6 +119,13 @@ const AdminDashboard = () => {
           </PieChart>
         </div>
       </div>
+      {/* <div className="calendar-card">
+          <SharedCalendar />
+      </div> */}
+        
+      
+
+
     </div>
   );
 };

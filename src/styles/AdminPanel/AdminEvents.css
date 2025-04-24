@@ -1,0 +1,29 @@
+body{
+    background-color: #f0f0f0;
+    overflow: hidden;
+    
+}
+
+.card-calendar{
+    width: 650px;
+    height: max-content;
+    display: flex;
+    margin: 0 auto;
+    padding: 10px;
+    border-radius: 12px;
+    margin-right: 350px;
+    margin-bottom: 150px;
+}
+
+.card-content{
+    width: 100%;
+    height: max-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background-color: #b8414163;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}

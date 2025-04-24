@@ -32,25 +32,25 @@ const Sidebar = () => {
           </Link>
         </li>
         <li>
-          <Link to="/AdminDashboard">
+          <Link to="/AdminUsers">
             <FaUsers className="sidebar-icon" />
             {!isCollapsed && 'Users'}
           </Link>
         </li>
         <li>
-          <Link to="/AdminDashboard">
+          <Link to="/AdminEvents">
             <FaCalendarAlt className="sidebar-icon" />
             {!isCollapsed && 'Events'}
           </Link>
         </li>
         <li>
-          <Link to="/AdminDashboard">
+          <Link to="/AdminReports">
             <FaChartBar className="sidebar-icon" />
             {!isCollapsed && 'Reports'}
           </Link>
         </li>
         <li>
-          <Link to="/AdminDashboard">
+          <Link to="/AdminSettings">
             <FaCog className="sidebar-icon" />
             {!isCollapsed && 'Settings'}
           </Link>

@@ -17,6 +17,10 @@ import Events from '../src/pages/Events'
 import About from '../src/pages/About'
 import Contact from '../src/pages/Contact'
 import PrivacyPolicy from './pages/PrivacyPolicy'
+import AdminUsers from './pages/AdminPanel/AdminUsers'
+import AdminEvents from './pages/AdminPanel/AdminEvents'
+import AdminReports from './pages/AdminPanel/AdminReports'
+import AdminSettings from './pages/AdminPanel/AdminSettings'
 
 
 
@@ -37,7 +41,10 @@ const App = () => {
         {/*Role-Based Routing and protected routes*/}
         <Route element ={<ProtectRoute allowedRoles={["Admin"]}/>}>
         <Route path="/AdminDashboard" element={ <AdminDashboard /> } />
-        
+        <Route path="/AdminUsers" element={ <AdminUsers /> } />
+        <Route path="/AdminEvents" element={ <AdminEvents /> } />
+        <Route path="/AdminReports" element={ <AdminReports /> } />
+        <Route path="/AdminSettings" element={ <AdminSettings /> } />
         </Route>
 
         <Route element ={<ProtectRoute allowedRoles={["EventOrganizer"]}/>}>
