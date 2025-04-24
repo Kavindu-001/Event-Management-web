@@ -76,6 +76,8 @@ const Sidebar = () => {
           <FaDesktop className="theme-icon" /> {!isCollapsed && 'System'}
         </button>
       </div>
+
+
     </div>
   );
 };
