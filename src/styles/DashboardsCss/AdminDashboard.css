@@ -1,0 +1,91 @@
+  .overview-container{
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 10px;
+    padding: 10px;
+
+  }
+  
+  .admin-dashboard h1 {
+    font-size: 2.5rem;
+    color: #2c3e50;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  .overview-content {
+    grid-column: 2/4;
+    grid-row: 1;
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 5px;
+    background-color: #f8f9fa;
+    border-radius: 12px;
+  }
+  
+  .overview-metrics {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap; /* Allow wrapping for smaller screens */
+    
+  }
+  
+  .metric-card {
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    flex: 1 1 calc(33.333% - 20px); /* Adjust width for responsiveness */
+    margin: 10px;
+    max-width: 250px
+  }
+  
+  .metric-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+  
+  .metric-card h2 {
+    font-size: 1.5rem;
+    color: #2c3e50;
+    margin-bottom: 10px;
+  }
+  
+  .metric-card p {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #1abc9c;
+    margin: 0;
+  }
+  
+  @media (max-width: 768px) {
+    .admin-dashboard h1 {
+      font-size: 2rem;
+    }
+  
+    .overview-content h1 {
+      font-size: 1.8rem;
+    }
+
+    .overview-metrics {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .metric-card {
+      flex: 1 1 100%; /* Full width on smaller screens */
+      max-width: 100%; /* Remove max-width for smaller screens */
+    }
+  
+    .metric-card h2 {
+      font-size: 1.2rem;
+    }
+  
+    .metric-card p {
+      font-size: 1.5rem;
+    }
+  }

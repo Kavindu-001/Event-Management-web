@@ -1,0 +1,144 @@
+.sidebar {
+  width: 225px;
+  height: 100vh;
+  background-color: var(--sidebar-bg);
+  color: var(--sidebar-text);
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  transition: width 0.3s ease;
+}
+
+.sidebar.collapsed {
+  width: 50px; /* Collapsed width */
+}
+
+.sidebar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.sidebar-header h2 {
+  font-size: 1.5rem;
+  color: var(--sidebar-header-text);
+  font-weight: bold;
+  transition: opacity 0.3s ease;
+}
+
+.sidebar.collapsed .sidebar-header h2 {
+  opacity: 0; /* Hide the title when collapsed */
+}
+
+.sidebar-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar-links li {
+  margin: 15px 0;
+}
+
+.sidebar-links a {
+  display: flex;
+  align-items: center;
+  color: var(--sidebar-text);
+  text-decoration: none;
+  font-size: 1rem;
+  padding: 10px 15px;
+  border-radius: 8px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.sidebar-links a:hover {
+  background-color: var(--sidebar-hover-bg);
+  color: var(--sidebar-hover-text);
+}
+
+.sidebar-icon {
+  margin-right: 10px;
+  font-size: 1.2rem;
+}
+
+.sidebar.collapsed .sidebar-links a {
+  justify-content: center;
+}
+
+.sidebar.collapsed .sidebar-links a .sidebar-icon {
+  margin-right: 0;
+}
+
+.sidebar.collapsed .sidebar-links a span {
+  display: none; /* Hide text when collapsed */
+}
+
+.theme-toggle {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 50px; /* Adjusted for spacing */
+  padding: 10px 0;
+}
+
+.theme-button {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  background: none;
+  border: none;
+  color: var(--sidebar-text);
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 10px 15px;
+  border-radius: 8px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.theme-button:hover {
+  background-color: var(--sidebar-hover-bg);
+  color: var(--sidebar-hover-text);
+}
+
+.theme-button.active {
+  background-color: var(--sidebar-active-bg);
+  color: var(--sidebar-active-text);
+}
+
+.theme-icon {
+  margin-right: 10px;
+  font-size: 1.2rem;
+}
+
+.sidebar.collapsed .theme-button {
+  justify-content: center;
+}
+
+.sidebar.collapsed .theme-button .theme-icon {
+  margin-right: 0;
+}
+
+.sidebar.collapsed .theme-button span {
+  display: none; /* Hide text when collapsed */
+}
+
+.toggle-button {
+  background: none;
+  border: none;
+  color: var(--sidebar-text);
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  margin-left: auto;
+  padding: 15px;
+}
+
+.toggle-button:hover {
+  transform: rotate(90deg);
+}

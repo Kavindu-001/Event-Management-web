@@ -1,0 +1,39 @@
+:root {
+  --sidebar-bg: #2c3e50;
+  --sidebar-text: #ecf0f1;
+  --sidebar-hover-bg: #34495e;
+  --sidebar-hover-text: #1abc9c;
+  --sidebar-active-bg: #1abc9c;
+  --sidebar-active-text: #ffffff;
+  --sidebar-header-text: #ffffff; /* Added for header text */
+}
+
+[data-theme='light'] {
+  --sidebar-bg: #ffffff;
+  --sidebar-text: #2c3e50;
+  --sidebar-hover-bg: #f0f0f0;
+  --sidebar-hover-text: #1abc9c;
+  --sidebar-active-bg: #1abc9c;
+  --sidebar-active-text: #ffffff;
+  --sidebar-header-text: #2c3e50; /* Light theme header text */
+}
+
+[data-theme='dark'] {
+  --sidebar-bg: #2c3e50;
+  --sidebar-text: #ecf0f1;
+  --sidebar-hover-bg: #34495e;
+  --sidebar-hover-text: #1abc9c;
+  --sidebar-active-bg: #1abc9c;
+  --sidebar-active-text: #ffffff;
+  --sidebar-header-text: #ffffff; /* Dark theme header text */
+}
+
+[data-theme='system'] {
+  --sidebar-bg: #f8f9fa; /* Default system background */
+  --sidebar-text: #2c3e50;
+  --sidebar-hover-bg: #e0e0e0;
+  --sidebar-hover-text: #1abc9c;
+  --sidebar-active-bg: #1abc9c;
+  --sidebar-active-text: #ffffff;
+  --sidebar-header-text: #2c3e50; /* System theme header text */
+}

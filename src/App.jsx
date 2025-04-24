@@ -1,5 +1,6 @@
 import React from 'react'
 import { BrowserRouter as Router, Routes, Route, } from 'react-router-dom'
+import './App.css'
 import LandingPage from './pages/LandingPage'
 import SignIn from '../src/pages/signIn'
 import SignUp from '../src/pages/SignUp'
@@ -16,6 +17,8 @@ import Events from '../src/pages/Events'
 import About from '../src/pages/About'
 import Contact from '../src/pages/Contact'
 import PrivacyPolicy from './pages/PrivacyPolicy'
+
+
 
 const App = () => {
     
@@ -34,6 +37,7 @@ const App = () => {
         {/*Role-Based Routing and protected routes*/}
         <Route element ={<ProtectRoute allowedRoles={["Admin"]}/>}>
         <Route path="/AdminDashboard" element={ <AdminDashboard /> } />
+        
         </Route>
 
         <Route element ={<ProtectRoute allowedRoles={["EventOrganizer"]}/>}>
