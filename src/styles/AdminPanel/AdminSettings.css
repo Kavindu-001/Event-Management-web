@@ -1,79 +1,114 @@
 body.admin-settings-page{
-    overflow: hidden;
-    margin-top: 10px;
-    margin-left: 100px;
+  overflow: hidden;
+  margin-bottom: 200px;
+  margin-left: 100px;
 }
 
 .admin-settings-container {
-    display: flex; 
-    width: 580px
-  }
+  display: flex;
+  flex-direction: column;
+  height: 350px;
+  width: 1000px;
+  margin-bottom: 520px;
+}
+
+.settings-content {
+  flex: 1;
+  padding: 10px;
+  background-color: #dad7cd;
+  font-family: Arial, sans-serif;
+  border-radius: 12px;
   
-  .settings-content {
-    flex: 1;
-    padding: 20px;
-    background-color: #c4a7a78a;
-    font-family: Arial, sans-serif;
-    font-size: 1rem;
-    color: #333;
-    border-radius: 12px;
-    height: 700px;
-  }
+}
+
+.settings-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.settings-header h1 {
+  color: #34495e;
+}
+
+.logout-button {
+  padding: 10px 20px;
+  background-color: #dc3545; /* Red background for logout */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-left: 37%;
   
-  .settings-content h1 {
-    text-align: center;
-    color: #34495e;
-    margin-bottom: 20px;
-  }
   
-  .settings-section {
-    margin-bottom: 30px;
-    padding: 20px;
-    background-color: #dad7cd;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  }
-  
-  .settings-section h2 {
-    color: #2c3e50;
-    margin-bottom: 15px;
-  }
-  
-  .settings-section label {
-    display: block;
-    margin-bottom: 10px;
-    font-size: 1rem;
-    color: #555;
-  }
-  
-  .settings-section input,
-  .settings-section select {
-    width: 100%;
-    padding: 8px;
-    margin-top: 5px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 1rem;
-  }
-  
-  .settings-section input[type="checkbox"] {
-    width: auto;
-    margin-top: 0;
-  }
-  
-  .save-button {
-    display: block;
-    margin: 20px auto;
-    padding: 10px 20px;
-    background-color: #28a745;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .save-button:hover {
-    background-color: #218838;
-  }
+}
+
+.logout-button:hover {
+  background-color: #c82333; /* Darker red on hover */
+}
+
+.settings-section {
+  margin-bottom: 30px;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.settings-section h2 {
+  color: #2c3e50;
+  margin-bottom: 15px;
+}
+
+.settings-section label {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 1rem;
+  color: #555;
+}
+
+.settings-section input,
+.settings-section select {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+.settings-section input[type="checkbox"] {
+  width: auto;
+  margin-top: 0;
+}
+
+.save-button {
+  display: block;
+  margin-right: 50px;
+  padding: 10px 20px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.save-button:hover {
+  background-color: #218838;
+}
+
+.settings-actions{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+

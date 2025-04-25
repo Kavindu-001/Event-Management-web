@@ -1,3 +1,11 @@
+body.sign-in-page {
+  overflow: hidden; /* Hide both horizontal and vertical overflow */
+  margin: 0; /* Remove any default margin */
+  padding: 0; /* Remove any default padding */
+  height: 100vh; /* Ensure the page takes up the full viewport height */
+  background-color: #f9f9f9; /* Optional: Set a background color */
+}
+
 .login-container {
   background-image: url("../assets/lrbackground.jpg");
   background-size: cover;
@@ -9,6 +17,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  
 }
 
 .card-login{
