@@ -74,7 +74,6 @@ body.admin-report-page {
   display: table; /* Ensure thead behaves like a table row group */
   width: 100%; /* Match the width of the table */
   background-color: #f8f9fa;
-  position: sticky; /* Keep the header fixed at the top */
   top: 0;
   z-index: 1;
 }
