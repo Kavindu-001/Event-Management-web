@@ -1,18 +1,26 @@
-body{
+body.admin-events-page{
     background-color: #f0f0f0;
-    overflow: hidden;
+    overflow-y: hidden;
+    margin-top: 10px;
+    
+}
+
+.admin-events-page{
+    display: flex;
+    flex-direction: row;
+    
     
 }
 
 .card-calendar{
-    width: 650px;
+    width: 580px;
     height: max-content;
     display: flex;
-    margin: 0 auto;
     padding: 10px;
     border-radius: 12px;
-    margin-right: 350px;
-    margin-bottom: 150px;
+    margin-left:260px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 .card-content{
@@ -23,7 +31,86 @@ body{
     justify-content: center;
     align-items: center;
     padding: 20px;
-    background-color: #b8414163;
+    background-color: #adb5bd;
     border-radius: 12px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
+
+.event-list-table {
+    margin-left: 20px;
+    padding: 20px;
+    background-color: #adb5bd; /* White background for the table container */
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for the container */
+    max-width: 650px; /* Limit the width of the table */
+    height: 658px; /* Limit the height of the table */
+    overflow: hidden; /* Prevent content overflow */
+  }
+  
+  .event-list-table h2 {
+    font-size: 1.8rem;
+    color: #34495e; /* Darker text color for the heading */
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  .event-list-container {
+    max-height: 580px; /* Set a fixed height for the table container */
+    overflow-y: auto; /* Enable vertical scrolling */
+    border: 2px solid #ddd; /* Add a border around the scrollable area */
+    border-radius: 8px;
+  }
+  
+  .event-list {
+    width: 100%;
+    border-collapse: collapse; /* Remove gaps between table cells */
+  }
+  
+  .event-list thead {
+    background-color: #f8f9fa; /* Light gray background for the header */
+    top: 0; /* Keep the header fixed at the top while scrolling */
+    z-index: 1;
+  }
+  
+  .event-list th {
+    padding: 12px 15px;
+    text-align: left;
+    font-size: 1rem;
+    color: #2c3e50; /* Darker text color for the header */
+    border-bottom: 2px solid #ddd; /* Add a bottom border */
+  }
+  
+  .event-list tbody tr {
+    transition: background-color 0.3s ease; /* Smooth hover effect */
+  }
+  
+  .event-list tbody tr:nth-child(even) {
+    background-color: #f9f9f9; /* Light gray background for even rows */
+  }
+  
+  .event-list tbody tr:hover {
+    background-color: #f1f1f1; /* Slightly darker gray on hover */
+  }
+  
+  .event-list td {
+    padding: 12px 15px;
+    font-size: 0.9rem;
+    color: #555; /* Subtle text color for table content */
+    border-bottom: 1px solid #ddd; /* Add a bottom border */
+  }
+  
+  .event-list td:first-child {
+    font-weight: bold; /* Highlight the first column (Event Name) */
+  }
+  
+  @media (max-width: 768px) {
+    .event-list th,
+    .event-list td {
+      font-size: 0.8rem; /* Reduce font size for smaller screens */
+      padding: 10px;
+    }
+  
+    .event-list-table h2 {
+      font-size: 1.5rem; /* Adjust heading size for smaller screens */
+    }
+  }

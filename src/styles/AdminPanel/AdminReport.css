@@ -1,0 +1,116 @@
+body.admin-report-page {
+  background-color: #f0f0f0; /* Light gray background for the page */
+  overflow: hidden; /* Prevent vertical scrolling on the body */
+  margin-top: 10px; /* Add some top margin to the page */
+  margin-left: 120px;
+}
+
+.admin-report-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  background-color: #e0e1dd;
+  font-family: Arial, sans-serif;
+}
+
+.admin-report-container h1 {
+  text-align: center;
+  color: #34495e;
+  margin-bottom: 20px;
+}
+
+.summary-section {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30px;
+  width: 100%;
+  max-width: 1200px;
+}
+
+.summary-card {
+  flex: 1;
+  margin: 0 10px;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.summary-card h3 {
+  color: #2c3e50;
+  margin-bottom: 10px;
+}
+
+.summary-card p {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #555;
+}
+
+.event-table {
+  width: 100%;
+  max-width: 1200px;
+  margin-top: 20px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  border-collapse: collapse;
+}
+
+.event-table h2 {
+  text-align: center;
+  margin: 20px 0;
+  color: #34495e;
+}
+
+.event-table table {
+  width: 100%;
+  border-collapse: collapse; /* Ensure consistent table layout */
+}
+
+.event-table thead {
+  display: table; /* Ensure thead behaves like a table row group */
+  width: 100%; /* Match the width of the table */
+  background-color: #f8f9fa;
+  position: sticky; /* Keep the header fixed at the top */
+  top: 0;
+  z-index: 1;
+}
+
+.event-table tbody {
+  display: block; /* Allow scrolling for the table body */
+  max-height: 300px; /* Set a fixed height for the table body */
+  overflow-y: auto; /* Enable vertical scrolling */
+  width: 100%; /* Match the width of the table */
+}
+
+.event-table th,
+.event-table td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+  width: 20%; /* Ensure consistent column widths */
+  box-sizing: border-box; /* Include padding and border in width calculation */
+}
+
+.event-table tbody tr {
+  display: table; /* Ensure rows behave like table rows */
+  width: 100%; /* Match the width of the table */
+  table-layout: fixed; /* Ensure consistent column widths */
+}
+
+.event-table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.event-table tbody tr:hover {
+  background-color: #f1f1f1;
+}
+
+.event-table th {
+  font-weight: bold;
+  background-color: #f8f9fa;
+  z-index: 1;
+}

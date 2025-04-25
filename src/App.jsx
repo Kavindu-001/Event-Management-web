@@ -19,9 +19,9 @@ import Contact from '../src/pages/Contact'
 import PrivacyPolicy from './pages/PrivacyPolicy'
 import AdminUsers from './pages/AdminPanel/AdminUsers'
 import AdminEvents from './pages/AdminPanel/AdminEvents'
-import AdminReports from './pages/AdminPanel/AdminReports'
 import AdminSettings from './pages/AdminPanel/AdminSettings'
-
+import ViewDetail from './pages/AdminPanel/ViewDetail'
+import AdminReport from './pages/AdminPanel/AdminReport'
 
 
 const App = () => {
@@ -43,8 +43,9 @@ const App = () => {
         <Route path="/AdminDashboard" element={ <AdminDashboard /> } />
         <Route path="/AdminUsers" element={ <AdminUsers /> } />
         <Route path="/AdminEvents" element={ <AdminEvents /> } />
-        <Route path="/AdminReports" element={ <AdminReports /> } />
-        <Route path="/AdminSettings" element={ <AdminSettings /> } />
+        <Route path="/AdminSettings" element={ <AdminSettings /> } /> 
+        <Route path="/ViewDetail/:id" element={ <ViewDetail /> } />
+        <Route path ="/AdminReport" element={<AdminReport />} />
         </Route>
 
         <Route element ={<ProtectRoute allowedRoles={["EventOrganizer"]}/>}>

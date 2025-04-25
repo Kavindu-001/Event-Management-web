@@ -1,0 +1,79 @@
+body.admin-settings-page{
+    overflow: hidden;
+    margin-top: 10px;
+    margin-left: 100px;
+}
+
+.admin-settings-container {
+    display: flex; 
+    width: 580px
+  }
+  
+  .settings-content {
+    flex: 1;
+    padding: 20px;
+    background-color: #c4a7a78a;
+    font-family: Arial, sans-serif;
+    font-size: 1rem;
+    color: #333;
+    border-radius: 12px;
+    height: 700px;
+  }
+  
+  .settings-content h1 {
+    text-align: center;
+    color: #34495e;
+    margin-bottom: 20px;
+  }
+  
+  .settings-section {
+    margin-bottom: 30px;
+    padding: 20px;
+    background-color: #dad7cd;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .settings-section h2 {
+    color: #2c3e50;
+    margin-bottom: 15px;
+  }
+  
+  .settings-section label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 1rem;
+    color: #555;
+  }
+  
+  .settings-section input,
+  .settings-section select {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+  }
+  
+  .settings-section input[type="checkbox"] {
+    width: auto;
+    margin-top: 0;
+  }
+  
+  .save-button {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .save-button:hover {
+    background-color: #218838;
+  }

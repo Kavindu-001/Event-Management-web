@@ -1,0 +1,177 @@
+body.admin-users-page{
+    background-color: #f0f0f0;
+    overflow-y: hidden;
+    overflow-x: visible;
+    margin-top: 10px;
+    margin-bottom: 150px;
+
+    
+}
+
+.user-activity-list-table {
+    margin-left: 260px;
+    padding: 20px;
+    background-color: #adb5bd; /* White background for the table container */
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for the container */ /* Limit the width of the table */
+    height: 660px; /* Limit the height of the table */
+    overflow: hidden; /* Prevent content overflow */
+    width:1280px;
+  }
+  
+  .user-activity-list-table h2 {
+    font-size: 1.8rem;
+    color: #34495e; /* Darker text color for the heading */
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  .user-activity-list-container {
+    max-height: 660px; /* Set a fixed height for the table container */
+    overflow-y: auto; /* Enable vertical scrolling */
+    border: 2px solid #ddd; /* Add a border around the scrollable area */
+    border-radius: 8px;
+    width:1280px;
+  }
+  
+  .user-activity-list {
+    width: 100%;
+    border-collapse: collapse; /* Remove gaps between table cells */
+  }
+  
+  .user-activity-list thead {
+    background-color: #f8f9fa; /* Light gray background for the header */
+    top: 0; /* Keep the header fixed at the top while scrolling */
+    z-index: 1;
+  }
+  
+  .user-activity-list th {
+    padding: 12px 15px;
+    text-align: left;
+    font-size: 1rem;
+    color: #2c3e50; /* Darker text color for the header */
+    border-bottom: 2px solid #ddd; /* Add a bottom border */
+  }
+  
+  .user-activity-list tbody tr {
+    transition: background-color 0.3s ease; /* Smooth hover effect */
+  }
+  
+  .user-activity-list tbody tr:nth-child(even) {
+    background-color: #f9f9f9; /* Light gray background for even rows */
+  }
+  
+  .user-activity-list tbody tr:hover {
+    background-color: #f1f1f1; /* Slightly darker gray on hover */
+  }
+  
+  .user-activity-list td {
+    padding: 12px 15px;
+    font-size: 0.9rem;
+    color: #5c5555fb; /* Subtle text color for table content */
+    border-bottom: 1px solid #ddd; /* Add a bottom border */
+  }
+  
+  .user-activity-list td:first-child {
+    font-weight: bold; /* Highlight the first column (Event Name) */
+  }
+  
+  @media (max-width: 768px) {
+    .user-activity-list th,
+    .user-activity-list td {
+      font-size: 0.8rem; /* Reduce font size for smaller screens */
+      padding: 10px;
+    }
+  
+    .user-activity-list-table h2 {
+      font-size: 1.5rem; /* Adjust heading size for smaller screens */
+    }
+  }
+  
+  /*status styling part */
+  .status {
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-weight: bold;
+    text-transform: capitalize;
+  }
+  
+  .status.live {
+    background-color: #28a745; /* Green for Live */
+    color: white;
+  }
+  
+  .status.end {
+    background-color: #dc3545; /* Red for End */
+    color: white;
+  }
+  
+  .status.pending {
+    background-color: #ffc107; /* Yellow for Pending */
+    color: black;
+  }
+
+  /* Button Group Styling */
+.btn-group {
+  display: flex;
+  gap: 10px; /* Space between buttons */
+}
+
+/* Approve Button */
+.btn-primary {
+  background-color: #28a745; /* Green background for Approve */
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 5px;
+  font-size: 0.9rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease; /* Smooth hover effect */
+}
+
+.btn-primary:hover {
+  background-color: #218838; /* Darker green on hover */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow on hover */
+}
+
+/* Decline Button */
+.btn-danger {
+  background-color: #dc3545; /* Red background for Decline */
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 5px;
+  font-size: 0.9rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease; /* Smooth hover effect */
+}
+
+.btn-danger:hover {
+  background-color: #c82333; /* Darker red on hover */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow on hover */
+}
+
+/* Button Group Alignment */
+.user-activity-list-container .btn-group {
+  justify-content: center; /* Center buttons in the table cell */
+  align-items: center;
+}
+/* View Button */
+.btn-info {
+  background-color: #17a2b8; /* Blue background for View */
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 5px;
+  font-size: 0.9rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease; /* Smooth hover effect */
+}
+
+.btn-info:hover {
+  background-color: #138496; /* Darker blue on hover */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow on hover */
+}

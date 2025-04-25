@@ -44,7 +44,7 @@ const Sidebar = () => {
           </Link>
         </li>
         <li>
-          <Link to="/AdminReports">
+          <Link to="/AdminReport">
             <FaChartBar className="sidebar-icon" />
             {!isCollapsed && 'Reports'}
           </Link>
