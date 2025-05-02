@@ -1,0 +1,93 @@
+body.organizer-bookings-page {
+  font-family: 'Roboto', sans-serif; /* Use a clean, modern font */
+  color: #333; /* Dark text for readability */
+  line-height: 1.6; /* Improved line height for readability */
+  overflow-x: hidden;
+}
+/* Organizer Bookings Page Container */
+.organizer-bookings-page-container {
+  display: flex;
+  flex-direction: column;
+  background-color: #f9f9f9; /* Light background for contrast */
+  min-height: 100vh;
+  
+}
+
+/* Organizer Bookings Page */
+.organizer-bookings-page {
+  padding: 20px;
+  margin-left: 280px; /* Adjust to account for the sidebar width */
+  background-color: #ffffff; /* White background for the content area */
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for elevation */
+  width:1000px; /* Set a fixed width for the page */
+  margin-top: 100px;
+  margin-bottom: 20px; /* Space at the bottom */
+}
+
+/* Typography Styling */
+.organizer-bookings-page h4 {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #333; /* Dark text for readability */
+  text-align: center;
+}
+
+/* Grid Container */
+.organizer-bookings-page .MuiGrid-container {
+  gap: 20px; /* Add spacing between grid items */
+}
+
+/* Card Styling */
+.organizer-bookings-page .MuiCard-root {
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for cards */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover effect */
+}
+
+.organizer-bookings-page .MuiCard-root:hover {
+  transform: translateY(-5px); /* Lift the card slightly on hover */
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2); /* Stronger shadow on hover */
+}
+
+/* Card Media (Image) */
+.organizer-bookings-page .MuiCardMedia-root {
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  object-fit: cover; /* Ensure the image fits nicely */
+}
+
+/* Card Content */
+.organizer-bookings-page .MuiCardContent-root {
+  padding: 16px;
+  text-align: left;
+}
+
+/* Typography in Card */
+.organizer-bookings-page .MuiTypography-h6 {
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.organizer-bookings-page .MuiTypography-body2 {
+  color: #666; /* Subtle text color for descriptions */
+}
+
+.organizer-bookings-page .MuiTypography-caption {
+  font-size: 0.875rem;
+  color: #999; /* Lighter text for captions */
+}
+
+/* Button Styling */
+.organizer-bookings-page .MuiButton-root {
+  background-color: #007bff; /* Primary button color */
+  color: #fff;
+  text-transform: none; /* Disable uppercase text */
+  font-weight: bold;
+}
+
+.organizer-bookings-page .MuiButton-root:hover {
+  background-color: #0056b3; /* Darker shade on hover */
+}

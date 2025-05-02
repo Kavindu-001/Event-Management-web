@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import '../../styles/AdminPanel/AdminReport.css';
-import Sidebar from '../../components/Sidebar';
+import AdminSidebar from '../../components/AdminSidebar';
 
 const AdminReport = () => {
 
@@ -49,7 +49,7 @@ const [summary, setSummary] = useState({
   return (
     <div className="admin-report-container">
       <div className="sidebar">
-        <Sidebar />
+        <AdminSidebar />
       </div>
       <h1>Admin Report</h1>
 

@@ -22,6 +22,10 @@ import AdminEvents from './pages/AdminPanel/AdminEvents'
 import AdminSettings from './pages/AdminPanel/AdminSettings'
 import ViewDetail from './pages/AdminPanel/ViewDetail'
 import AdminReport from './pages/AdminPanel/AdminReport'
+import OrganizerEvents from './pages/OrganizerPanel/OrganizerEvents'
+import OrganizerReports from './pages/OrganizerPanel/OrganizerReports'
+import OrganizerSettings from './pages/OrganizerPanel/OrganizerSettings'
+import OrganizerBookings from './pages/OrganizerPanel/OrganizerBookings'
 
 
 const App = () => {
@@ -46,10 +50,15 @@ const App = () => {
         <Route path="/AdminSettings" element={ <AdminSettings /> } /> 
         <Route path="/ViewDetail/:id" element={ <ViewDetail /> } />
         <Route path ="/AdminReport" element={<AdminReport />} />
+        
         </Route>
 
         <Route element ={<ProtectRoute allowedRoles={["EventOrganizer"]}/>}>
         <Route path="/EventOrganizerDashboard" element={ <EventOrganizerDashboard /> } />
+        <Route path="/OrganizerEvents" element={ <OrganizerEvents /> } />
+        <Route path="/OrganizerReports" element={ <OrganizerReports /> } />
+        <Route path="/OrganizerSettings" element={ <OrganizerSettings /> } />
+        <Route path="/OrganizerBookings" element={ <OrganizerBookings /> } />
         </Route>
 
         <Route element ={<ProtectRoute allowedRoles={["Artist"]}/>}>

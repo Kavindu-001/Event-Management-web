@@ -1,0 +1,154 @@
+/* General Page Styling */
+body.organizer-events-page {
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    height: 100vh;
+  }
+
+  .content-of-the-page{
+    margin-top: 670px;
+    margin-left: 50px;
+  }
+  
+  /* Calendar Card */
+  .card-calendar {
+    width: 1200px;
+    height: max-content;
+    display: flex;
+    padding: 10px;
+    border-radius: 12px;
+    margin-left: 260px;
+    margin-right: 0px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    
+  }
+  
+  .card-content {
+    width: 100%;
+    height: max-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background-color: #adb5bd;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+   
+  }
+
+  .calendar-container {
+    display: flex;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    position: relative; /* Ensure proper positioning */
+    z-index: 1; /* Lower z-index to stay behind the header */
+  }
+
+  /* Booking Request Table Section */
+  .organizer-booking-request-table {
+    margin: 30px 20px;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-left: 260px;
+    margin-right: 0px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    max-height: 500px; /* Set a fixed height for the table container */
+    max-width: 1200px;
+    overflow-y: auto; /* Enable vertical scrolling */
+    overflow-x: auto; /* Enable horizontal scrolling if needed */
+    border: 2px solid #ddd; /* Add a border around the scrollable area */
+  }
+  
+  .organizer-booking-request-table h2 {
+    font-size: 1.8rem;
+    color: #34495e;
+    margin-bottom: 20px;
+  }
+  
+  /* Table Styling */
+  .booking-request-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .booking-request-table th,
+  .booking-request-table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .booking-request-table th {
+    background-color: #f8f9fa;
+    color: #555;
+    font-weight: bold;
+    top: 0; /* Stick to the top */
+    z-index: 1; /* Ensure it stays above other content */   
+  }
+  
+  .booking-request-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  .booking-request-table tr:hover {
+    background-color: #f1f1f1;
+  }
+  
+  /* Status Styling */
+  .status {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-weight: bold;
+    text-transform: capitalize;
+    color: white;
+  }
+  
+  .status.pending {
+    background-color: #ffc107; /* Yellow for Pending */
+    color: black;
+  }
+  
+  .status.approved {
+    background-color: #28a745; /* Green for Approved */
+  }
+  
+  .status.declined {
+    background-color: #dc3545; /* Red for Declined */
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .card-calendar {
+      width: 100%;
+      margin-left: 0;
+      margin-right: 0;
+    }
+  
+    .organizer-booking-request-table {
+      margin: 20px 10px;
+      padding: 15px;
+    }
+  
+    .booking-request-table th,
+    .booking-request-table td {
+      padding: 10px;
+      font-size: 0.9rem;
+    }
+  
+    .organizer-booking-request-table h2 {
+      font-size: 1.5rem;
+    }
+  }

@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import '../styles/Sidebar.css'; // Import CSS for styling
+import '../styles/AdminSidebar.css'; // Import CSS for styling
 import { FaHome, FaUsers, FaCalendarAlt, FaCog, FaChartBar, FaMoon, FaSun, FaDesktop, FaBars } from 'react-icons/fa'; // Import icons
 
-const Sidebar = () => {
+const AdminSidebar = () => {
   const [theme, setTheme] = useState('system'); // Default theme is 'system'
   const [isCollapsed, setIsCollapsed] = useState(false); // State to toggle sidebar
 
@@ -82,4 +82,4 @@ const Sidebar = () => {
   );
 };
 
-export default Sidebar;
+export default AdminSidebar;

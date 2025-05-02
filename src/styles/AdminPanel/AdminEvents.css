@@ -12,7 +12,7 @@ body.admin-events-page{
     
 }
 
-.card-calendar{
+.admin-card-calendar{
     width: 580px;
     height: max-content;
     display: flex;
@@ -23,7 +23,7 @@ body.admin-events-page{
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-.card-content{
+.admin-card-content{
     width: 100%;
     height: max-content;
     display: flex;

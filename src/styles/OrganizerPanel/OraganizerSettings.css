@@ -1,0 +1,114 @@
+/* Settings Page */
+.organizer-settings-page  {
+    padding: 20px;
+    background-color: #f9f9f9;
+    min-height: 300px !important;
+    width:1200px;
+    margin-top: 150px;
+    margin-left: 300px;
+    border-radius: 12px;
+    overflow-y: hidden !important;
+    
+  }
+
+  /* Settings Page Header */
+  .organizer-settings-page .dashboard-header {
+    position: fixed; /* Fix the header at the top */
+    top: 0;
+    left: 0;
+    width: 100%; /* Make the header span the full width */
+    z-index: 100; /* Ensure it stays above other elements */
+    background-color: #ffffff; /* Add a solid background */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+    padding: 10px 20px;
+  }
+
+  /* Add padding to the top of the settings page content */
+  .organizer-settings-page .settings-container {
+    margin-top: 250px; /* Adjust this value to match the height of the header */
+  }
+
+
+  
+  /* Settings Container */
+  .settings-container {
+    max-width: 1100px;
+    height: 500px;
+    margin: 0 auto;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: row;
+    gap:50px;
+    justify-items: center;  
+    margin-top: 20px;
+  }
+  
+  /* Section Titles */
+  .settings-container h1 {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  .settings-section {
+    margin-bottom: 20px;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    background-color: #f0f0f0;
+    flex: 1;
+
+    
+  }
+  .settings-section h2 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color: #333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    flex-direction: row;
+  }
+  
+  /* Form Groups */
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  .form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #555;
+  }
+  
+  .form-group input {
+    width: 300px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1rem;
+  }
+  
+  /* Buttons */
+  .save-button {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .save-button:hover {
+    background-color: #0056b3;
+  }

@@ -1,5 +1,5 @@
 import React from 'react';
-import Sidebar from '../../components/Sidebar'; // Import Sidebar component
+import AdminSidebar from '../../components/AdminSidebar'; // Import Sidebar component
 import '../../styles/DashboardsCss/AdminDashboard.css'; // Import CSS for styling
 // import SharedCalendar from '../../components/SharedCalendar'; // Import SharedCalendar component
 import { LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip, BarChart, Bar, PieChart, Pie, Cell } from 'recharts'; // Import Recharts components
@@ -49,7 +49,7 @@ const COLORS = ['#66D9EF', '#8BC34A', '#E8E231', '#FFC107', '#FF5722', '#673AB7'
 const AdminDashboard = () => {
   return (
     <div className="overview-container">
-      <Sidebar />
+      <AdminSidebar />
       
       <div className="overview-content">  
         <div className="overview-metrics">

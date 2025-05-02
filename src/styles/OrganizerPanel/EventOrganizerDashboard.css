@@ -1,0 +1,239 @@
+body.organizer-dashboard-page{
+    overflow-y:scroll;
+}
+
+/* Main Layout */
+.organizer-dashboard {
+    display: flex;
+    overflow: hidden;
+    margin-top: 380px;
+    margin-left:70px;
+    margin-bottom: 10px;
+  }
+  
+  .dashboard-content {
+    margin-left: 250px; /* Match the width of the sidebar */
+    padding: 20px;
+    width: 1200px;
+    background-color: #f9f9f9;
+    border-radius: 6px;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
+    
+  }
+  
+  /* Overview Section */
+  .overview-section {
+    margin-bottom: 30px;
+  }
+  
+  .overview-section h2 {
+    font-size: 1.8rem;
+    color: #34495e;
+    margin-bottom: 20px;
+  }
+  
+  .metrics {
+    display: flex;
+    gap: 20px;
+  }
+  
+  .metric-card {
+    flex: 1;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  .metric-card h3 {
+    font-size: 1.2rem;
+    color: #555;
+    margin-bottom: 10px;
+  }
+  
+  .metric-card p {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #1976d2;
+  }
+  
+  /* Recent Events Section */
+  .recent-events-section {
+    margin-top: 30px;
+  }
+  
+  .recent-events-section h2 {
+    font-size: 1.8rem;
+    color: #34495e;
+    margin-bottom: 20px;
+  }
+  
+  .recent-events-table-container {
+    max-height: 300px; /* Set a fixed height for the table container */
+    overflow-y: auto; /* Enable vertical scrolling */
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+  }
+  
+  .recent-events-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .recent-events-table th,
+  .recent-events-table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .recent-events-table th {
+    background-color: #f8f9fa;
+    color: #555;
+    top: 0;
+    z-index: 1;
+  }
+  
+.recent-events-table th:nth-child(3),
+.recent-events-table th:nth-child(4),
+.recent-events-table td:nth-child(3),
+.recent-events-table td:nth-child(4) {
+  width: 15%; /* Adjust width as needed */
+  text-align: center; /* Center-align the dates */
+}
+  
+  .recent-events-table tr:hover {
+    background-color: #f1f1f1;
+  }
+  
+  /* Status Styles */
+  .status {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-weight: bold;
+    text-transform: capitalize;
+    color: white;
+  }
+  
+  .status.live {
+    background-color: #28a745; /* Green for Live */
+  }
+  
+  .status.end {
+    background-color: #6c757d !important; /* Gray for End */
+  }
+  
+  .status.pending {
+    background-color: #ffc107; /* Yellow for Pending */
+    color: black;
+  }
+  
+  .status.cancel {
+    background-color: #dc3545; /* Red for Cancel */
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .dashboard-content {
+      margin-left: 0; /* Remove sidebar margin for smaller screens */
+      padding: 10px;
+    }
+  
+    .metrics {
+      flex-direction: column; /* Stack metric cards vertically */
+      gap: 10px;
+    }
+  
+    .metric-card {
+      padding: 15px;
+    }
+  
+    .recent-events-table th,
+    .recent-events-table td {
+      padding: 10px;
+      font-size: 0.9rem; /* Adjust font size for smaller screens */
+    }
+  
+    .recent-events-section h2 {
+      font-size: 1.5rem; /* Adjust heading size for smaller screens */
+    }
+  }
+
+  /* Overview Bookings Section */
+.overview-bookings-section {
+  margin: 20px auto;
+  padding: 10px;
+  background-color: #f9f9f9; /* Light background for contrast */
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for elevation */
+  max-width: 1200px; /* Limit the width */
+}
+
+/* Typography Styling */
+.overview-bookings-section h5 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #333; /* Dark text for readability */
+}
+
+/* Grid Container */
+.overview-bookings-section .MuiGrid-container {
+  gap: 20px; /* Add spacing between grid items */
+}
+
+/* Card Styling */
+.overview-bookings-section .MuiCard-root {
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for cards */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover effect */
+}
+
+.overview-bookings-section .MuiCard-root:hover {
+  transform: translateY(-5px); /* Lift the card slightly on hover */
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2); /* Stronger shadow on hover */
+}
+
+/* Card Media (Image) */
+.overview-bookings-section .MuiCardMedia-root {
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  object-fit: cover; /* Ensure the image fits nicely */
+}
+
+/* Card Content */
+.overview-bookings-section .MuiCardContent-root {
+  padding: 16px;
+  text-align: left;
+}
+
+/* Typography in Card */
+.overview-bookings-section .MuiTypography-h6 {
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.overview-bookings-section .MuiTypography-body2 {
+  color: #666; /* Subtle text color for descriptions */
+}
+
+.overview-bookings-section .MuiTypography-caption {
+  font-size: 0.875rem;
+  color: #999; /* Lighter text for captions */
+}
+
+/* Button Styling */
+.overview-bookings-section .MuiButton-root {
+  background-color: #007bff; /* Primary button color */
+  color: #fff;
+  text-transform: none; /* Disable uppercase text */
+  font-weight: bold;
+}
+
+.overview-bookings-section .MuiButton-root:hover {
+  background-color: #0056b3; /* Darker shade on hover */
+}

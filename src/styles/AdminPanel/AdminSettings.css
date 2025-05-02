@@ -1,7 +1,8 @@
 body.admin-settings-page{
-  overflow: hidden;
+  overflow:scroll;
   margin-bottom: 200px;
   margin-left: 100px;
+  overflow-x: hidden;
 }
 
 .admin-settings-container {
@@ -9,7 +10,7 @@ body.admin-settings-page{
   flex-direction: column;
   height: 350px;
   width: 1000px;
-  margin-bottom: 520px;
+  margin-bottom: 550px;
 }
 
 .settings-content {
@@ -105,10 +106,9 @@ body.admin-settings-page{
 .settings-actions{
   display: flex;
   justify-content: space-between;
-  margin-top: 20px;
+  margin-top: 0px;
   justify-content: center;
   align-items: center;
-  margin-top: 20px;
-  margin-bottom: 20px;
+  
 }
 

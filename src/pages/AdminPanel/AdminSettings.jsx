@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import Sidebar from '../../components/Sidebar';
+import AdminSidebar from '../../components/AdminSidebar';
 import '../../styles/AdminPanel/AdminSettings.css';
 
 const AdminSettings = () => {
@@ -47,7 +47,7 @@ const AdminSettings = () => {
 
   return (
     <div className="admin-settings-container">
-      <Sidebar />
+      <AdminSidebar />
       <div className="settings-content">
         <div className="settings-header">
           <h1>Admin Settings</h1>

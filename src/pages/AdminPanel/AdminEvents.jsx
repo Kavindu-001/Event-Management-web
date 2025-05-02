@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import Sidebar from '../../components/Sidebar'
+import AdminSidebar from '../../components/AdminSidebar'
 import {  Card, CardContent } from '@mui/material'
 import SharedCalendar from '../../components/SharedCalendar' // Import SharedCalendar component
 import '../../styles/AdminPanel/AdminEvents.css'
@@ -13,10 +13,10 @@ const AdminEvents = () => {
   }, []);
   return (
     <div className='admin-events-page'>
-      <Sidebar />
-      <Card className="card-calendar">
-        <CardContent className="card-content">
-          <h2>Shared Calendar</h2>
+      <AdminSidebar />
+      <Card className="admin-card-calendar">
+        <CardContent className="admin-card-content">
+          <h2>Event Calendar</h2>
           <SharedCalendar />
         </CardContent>  
       </Card>

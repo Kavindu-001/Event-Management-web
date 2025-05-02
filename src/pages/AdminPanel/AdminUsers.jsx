@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Sidebar from '../../components/Sidebar';
+import AdminSidebar from '../../components/AdminSidebar';
 import '../../styles/AdminPanel/AdminUsers.css';
 import { ButtonGroup } from '@mui/joy';
 
@@ -62,7 +62,7 @@ const AdminUsers = () => {
 
   return (
     <div>
-      <Sidebar />
+      <AdminSidebar />
 
       <div className='user-activity-list-table'>
         <h2>User Activity List Table</h2>
