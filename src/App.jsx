@@ -26,6 +26,12 @@ import OrganizerEvents from './pages/OrganizerPanel/OrganizerEvents'
 import OrganizerReports from './pages/OrganizerPanel/OrganizerReports'
 import OrganizerSettings from './pages/OrganizerPanel/OrganizerSettings'
 import OrganizerBookings from './pages/OrganizerPanel/OrganizerBookings'
+import SidebarOverview from '../src/components/ChildComponents/SidebarOverview';
+import SidebarEvents from './components/ChildComponents/SidebarEvents'
+import SidebarBookings from './components/ChildComponents/SidebarBookings'
+import SidebarCalendar from './components/ChildComponents/SidebarCalendar'
+import SidebarProfile from './components/ChildComponents/SidebarProfile'
+import SidebarSettings from './components/ChildComponents/SidebarSettings'
 
 
 const App = () => {
@@ -67,6 +73,12 @@ const App = () => {
 
         <Route element ={<ProtectRoute allowedRoles={["Bands"]}/>}>
         <Route path="/BandDashboard" element={<BandDashboard /> } />
+        <Route path="SidebarOverview" element={<SidebarOverview />} />
+        <Route path="SidebarEvents" element={<SidebarEvents />} />
+        <Route path="SidebarBookings" element={<SidebarBookings />} />
+        <Route path="SidebarCalendar" element={<SidebarCalendar />} />
+        <Route path="SidebarProfile" element={<SidebarProfile />} />
+        <Route path="SidebarSettings" element={<SidebarSettings />} />
         </Route>
 
         <Route element ={<ProtectRoute allowedRoles={["Consumer"]}/>}>
