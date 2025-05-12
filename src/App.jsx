@@ -31,7 +31,6 @@ import SidebarEvents from './components/ChildComponents/SidebarEvents'
 import SidebarBookings from './components/ChildComponents/SidebarBookings'
 import SidebarCalendar from './components/ChildComponents/SidebarCalendar'
 import SidebarProfile from './components/ChildComponents/SidebarProfile'
-import SidebarSettings from './components/ChildComponents/SidebarSettings'
 
 
 const App = () => {
@@ -78,7 +77,6 @@ const App = () => {
         <Route path="SidebarBookings" element={<SidebarBookings />} />
         <Route path="SidebarCalendar" element={<SidebarCalendar />} />
         <Route path="SidebarProfile" element={<SidebarProfile />} />
-        <Route path="SidebarSettings" element={<SidebarSettings />} />
         </Route>
 
         <Route element ={<ProtectRoute allowedRoles={["Consumer"]}/>}>
@@ -101,7 +99,6 @@ const App = () => {
       </Routes>
     </Router>
 
-   
   )
 }
 

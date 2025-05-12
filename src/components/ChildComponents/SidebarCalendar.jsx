@@ -1,5 +1,6 @@
 import React from 'react'
 import SideBar from '../../components/SideBar'
+import SharedCalendar from '../../components/SharedCalendar'
 
 const Sidebarcontainer = ({ to, children, className }) => {
   return (
@@ -19,7 +20,16 @@ const SidebarCalendar = () => {
       <div className='Sidebarcontainer'>
         <SideBar />
       </div>
-      SideBar Calendar
+      <div className='shared-calendar'>
+        <div className='shared-calendar-header'>
+          <h2>Shared Calendar</h2>
+        </div>
+        
+         {/* calendar */}
+        <div className='shared-calendar-content'>
+          <SharedCalendar />
+        </div>
+      </div>
     </div>
   )
 }

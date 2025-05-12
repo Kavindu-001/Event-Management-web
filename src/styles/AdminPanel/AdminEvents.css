@@ -1,19 +1,20 @@
 body.admin-events-page{
     background-color: #f0f0f0;
-    overflow-y: hidden;
-    margin-top: 10px;
+    overflow-y: auto;
+    margin-top: 380px;
     
 }
 
 .admin-events-page{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    align-items: center;
     
     
 }
 
 .admin-card-calendar{
-    width: 580px;
+    width: 800px;
     height: max-content;
     display: flex;
     padding: 10px;
@@ -21,6 +22,7 @@ body.admin-events-page{
     margin-left:260px;
     margin-bottom: 20px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    
 }
 
 .admin-card-content{
@@ -37,7 +39,7 @@ body.admin-events-page{
 }
 
 .event-list-table {
-    margin-left: 20px;
+    margin-left: 250px;
     padding: 20px;
     background-color: #adb5bd; /* White background for the table container */
     border-radius: 12px;
@@ -45,6 +47,7 @@ body.admin-events-page{
     max-width: 650px; /* Limit the width of the table */
     height: 658px; /* Limit the height of the table */
     overflow: hidden; /* Prevent content overflow */
+    margin-bottom: 20px;
   }
   
   .event-list-table h2 {

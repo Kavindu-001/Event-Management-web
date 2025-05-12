@@ -1,5 +1,8 @@
-import React from 'react'
+import React  from 'react'
+import { useEffect } from 'react';
 import SideBar from '../../components/SideBar'
+import '../../styles/SideBar/SidebarBookings.css';
+import CreatePost from './CreatePost';
 
 const Sidebarcontainer = ({ to, children, className }) => {
   return (
@@ -13,17 +16,30 @@ const Sidebarcontainer = ({ to, children, className }) => {
   );
 };
 
+  
 const SidebarBookings = () => {
+  useEffect(() => {
+    document.body.classList.add('organizer-header-page');
+    return () => {
+      document.body.classList.remove('organizer-header-page');
+    };
+  }, []);
+ 
   return (
     <div>
       <div className='Sidebarcontainer'>
         <SideBar />
       </div>
-      
-      
-      SideBar Bookings
+      <div className='Sidebar-Bookings-template'>
+        <CreatePost />
+
+      </div>
+
+
+
     </div>
   )
 }
+
 
 export default SidebarBookings

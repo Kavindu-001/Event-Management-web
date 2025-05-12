@@ -1,6 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import '../styles/SideBar.css';
+import CommonHeader from './CommonHeader';
 
 // Child component for individual navigation items
 const NavItem = ({ to, children, className }) => {
@@ -21,6 +22,9 @@ const SideBar = ({ userType }) => {
 
   return (
     <div className="sidebar-container">
+      <div className="sidebar-header">
+        <CommonHeader />
+      </div>
       <div className="sidebar-logo">
         <h2>Eventia</h2>
         <h4>{dashboardName} <br/> Panel</h4>
@@ -32,7 +36,6 @@ const SideBar = ({ userType }) => {
         <NavItem to="/SidebarBookings">Bookings</NavItem>
         <NavItem to="/SidebarCalendar">Calendar</NavItem>
         <NavItem to="/SidebarProfile">My Profile</NavItem>
-        <NavItem to="/SidebarSettings">Settings</NavItem>
         <NavItem to="/SignIn" className="logout">Logout</NavItem>
       </nav>
     </div>

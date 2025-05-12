@@ -11,7 +11,6 @@ body.organizer-dashboard-page {
   align-items: center;
   background-color: #c2c5ce; /* White background for the header */
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for elevation */
-  position: sticky; /* Keep the header fixed at the top */
   top: 0;
   height: 100px;
   width: 1600px; /* Full width of the viewport */
