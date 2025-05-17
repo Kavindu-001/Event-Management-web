@@ -22,6 +22,7 @@ import AdminEvents from './pages/AdminPanel/AdminEvents'
 import AdminSettings from './pages/AdminPanel/AdminSettings'
 import ViewDetail from './pages/AdminPanel/ViewDetail'
 import AdminReport from './pages/AdminPanel/AdminReport'
+import AdminMail from './pages/AdminPanel/AdminMail'
 import OrganizerEvents from './pages/OrganizerPanel/OrganizerEvents'
 import OrganizerReports from './pages/OrganizerPanel/OrganizerReports'
 import OrganizerSettings from './pages/OrganizerPanel/OrganizerSettings'
@@ -31,7 +32,7 @@ import SidebarEvents from './components/ChildComponents/SidebarEvents'
 import SidebarBookings from './components/ChildComponents/SidebarBookings'
 import SidebarCalendar from './components/ChildComponents/SidebarCalendar'
 import SidebarProfile from './components/ChildComponents/SidebarProfile'
-
+ 
 
 const App = () => {
     
@@ -55,6 +56,7 @@ const App = () => {
         <Route path="/AdminSettings" element={ <AdminSettings /> } /> 
         <Route path="/ViewDetail/:id" element={ <ViewDetail /> } />
         <Route path ="/AdminReport" element={<AdminReport />} />
+        <Route path ="/AdminMail" element={<AdminMail />} />
         
         </Route>
 
@@ -68,6 +70,11 @@ const App = () => {
 
         <Route element ={<ProtectRoute allowedRoles={["Artist"]}/>}>
         <Route path="/ArtistDashboard" element={<ArtistDashboard /> } />
+        <Route path="SidebarOverview" element={<SidebarOverview />} />
+        <Route path="SidebarEvents" element={<SidebarEvents />} />
+        <Route path="SidebarBookings" element={<SidebarBookings />} />
+        <Route path="SidebarCalendar" element={<SidebarCalendar />} />
+        <Route path="SidebarProfile" element={<SidebarProfile />} />
         </Route>
 
         <Route element ={<ProtectRoute allowedRoles={["Bands"]}/>}>
@@ -81,18 +88,38 @@ const App = () => {
 
         <Route element ={<ProtectRoute allowedRoles={["Consumer"]}/>}>
         <Route path="/ConsumersDashboard" element={<ConsumersDashboard />} />
+        <Route path="SidebarOverview" element={<SidebarOverview />} />
+        <Route path="SidebarEvents" element={<SidebarEvents />} />
+        <Route path="SidebarBookings" element={<SidebarBookings />} />
+        <Route path="SidebarCalendar" element={<SidebarCalendar />} />
+        <Route path="SidebarProfile" element={<SidebarProfile />} />
         </Route>
 
         <Route element ={<ProtectRoute allowedRoles={["SecurityTeam"]}/>}>
         <Route path="/SecurityTeamDashboard" element={<SecurityTeamDashboard />} />
+        <Route path="SidebarOverview" element={<SidebarOverview />} />
+        <Route path="SidebarEvents" element={<SidebarEvents />} />
+        <Route path="SidebarBookings" element={<SidebarBookings />} />
+        <Route path="SidebarCalendar" element={<SidebarCalendar />} />
+        <Route path="SidebarProfile" element={<SidebarProfile />} />
         </Route>
         
         <Route element ={<ProtectRoute allowedRoles={["Sponsor"]}/>}>
         <Route path="/SponsorsDashboard" element={<SponsorsDashboard />} />
+        <Route path="SidebarOverview" element={<SidebarOverview />} />
+        <Route path="SidebarEvents" element={<SidebarEvents />} />
+        <Route path="SidebarBookings" element={<SidebarBookings />} />
+        <Route path="SidebarCalendar" element={<SidebarCalendar />} />
+        <Route path="SidebarProfile" element={<SidebarProfile />} />
         </Route>
         
         <Route element ={<ProtectRoute allowedRoles={["Designer"]}/>}>
-        <Route path="/DesignersDashboard" element={<DesignersDashboard />} />        
+        <Route path="/DesignersDashboard" element={<DesignersDashboard />} />
+        <Route path="SidebarOverview" element={<SidebarOverview />} />
+        <Route path="SidebarEvents" element={<SidebarEvents />} />
+        <Route path="SidebarBookings" element={<SidebarBookings />} />
+        <Route path="SidebarCalendar" element={<SidebarCalendar />} />
+        <Route path="SidebarProfile" element={<SidebarProfile />} />        
         </Route>
        
 

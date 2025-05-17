@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/AdminSidebar.css'; // Import CSS for styling
-import { FaHome, FaUsers, FaCalendarAlt, FaCog, FaChartBar, FaMoon, FaSun, FaDesktop, FaBars } from 'react-icons/fa'; // Import icons
+import { FaHome, FaUsers, FaCalendarAlt, FaCog, FaChartBar, FaMoon, FaSun, FaDesktop, FaBars, FaEnvelope } from 'react-icons/fa'; // Import icons
 
 const AdminSidebar = () => {
   const [theme, setTheme] = useState('system'); // Default theme is 'system'
@@ -52,6 +52,12 @@ const AdminSidebar = () => {
         <li>
           <Link to="/AdminSettings">
             <FaCog className="sidebar-icon" />
+            {!isCollapsed && 'Settings'}
+          </Link>
+        </li>
+        <li>
+          <Link to="/AdminMail">
+            <FaEnvelope className="sidebar-icon" />
             {!isCollapsed && 'Settings'}
           </Link>
         </li>
