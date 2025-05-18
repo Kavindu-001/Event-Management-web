@@ -1,402 +1,543 @@
 import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import OrganizerSidebar from '../../components/OrganizerSidebar';
 import DashboardHeader from '../../components/DashboardHeader';
-import SharedCalendar from '../../components/SharedCalendar';
-import { Card, CardContent } from '@mui/material';
+import {
+  Card,
+  CardContent,
+  TextField,
+  Button,
+  Box,
+  Grid,
+  Typography,
+  Select,
+  MenuItem,
+  ToggleButtonGroup,
+  ToggleButton,
+  InputAdornment,
+  IconButton,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  TableSortLabel,
+  Paper,
+} from '@mui/material';
+import { Calendar, dateFnsLocalizer } from 'react-big-calendar';
+import { format, parse, startOfWeek, getDay } from 'date-fns';
+import 'react-big-calendar/lib/css/react-big-calendar.css';
 import '../../styles/OrganizerPanel/OrganizerEvents.css';
+import Tooltip from '@mui/material/Tooltip';
+import SearchIcon from '@mui/icons-material/Search';
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import CancelIcon from '@mui/icons-material/Cancel';
+import EventIcon from '@mui/icons-material/Event';
+import OfferIcon from '@mui/icons-material/LocalOffer';
+
+// Date-fns localizer
+const locales = { 'en-US': require('date-fns/locale/en-US') };
+const localizer = dateFnsLocalizer({
+  format,
+  parse,
+  startOfWeek,
+  getDay,
+  locales,
+});
 
 const OrganizerEvents = () => {
-  const [artistBookingRequests, setArtistBookingRequests] = useState([]);
-  const [bandBookingRequests, setBandBookingRequests] = useState([]);
-  const [lightingTeamBookingRequests, setLightingTeamBookingRequests] = useState([]);
-  const [soundTeamBookingRequests, setSoundTeamBookingRequests] = useState([]);
-  const [stageTeamBookingRequests, setStageTeamBookingRequests] = useState([]);
-  const [securityTeamBookingRequests, setSecurityTeamBookingRequests] = useState([]);
-  const [sponsorBookingRequests, setSponsorBookingRequests] = useState([]);
-  const [designerBookingRequests, setDesignerBookingRequests] = useState([]);
+  const token = localStorage.getItem('token');
+  const headers = { headers: { 'x-auth-token': token } };
+
+  const [calendarEvents, setCalendarEvents] = useState([]);
+  const [insights, setInsights] = useState({ totalEvents: 0, totalOffers: 0 });
+  const [events, setEvents] = useState([]);
+  const [bookingRequests, setBookingRequests] = useState([]);
+  const [form, setForm] = useState({ title: '', description: '', date: '' });
+  const [message, setMessage] = useState({ error: '', success: '' });
+  const [calendarFilter, setCalendarFilter] = useState('all'); // 'all', 'events', 'offers'
+  const [eventSearch, setEventSearch] = useState('');
+  const [offerSearch, setOfferSearch] = useState('');
+  const [eventSort, setEventSort] = useState({ field: 'date', order: 'asc' });
+  const [offerSort, setOfferSort] = useState({ field: 'date', order: 'asc' });
 
   useEffect(() => {
     document.body.classList.add('organizer-events-page');
-    return () => {
-      document.body.classList.remove('organizer-events-page');
-    };
+    return () => document.body.classList.remove('organizer-events-page');
   }, []);
 
   useEffect(() => {
-    // Simulate fetching artist booking requests from the backend
-    const fetchArtistBookingRequests = async () => {
-      const requests = [
-        { eventId: 'E001', artistId: 'A001', eventName: 'Music Festival', artistName: 'John Doe', eventDate: '2025-05-01', status: 'Pending' },
-        { eventId: 'E002', artistId: 'A002', eventName: 'DJ Madness', artistName: 'Jane Smith', eventDate: '2025-04-15', status: 'Approved' },
-        { eventId: 'E003', artistId: 'A003', eventName: 'Rock the Night', artistName: 'Alice Johnson', eventDate: '2025-04-10', status: 'Declined' },
-        { eventId: 'E004', artistId: 'A004', eventName: 'Summer Beats Festival', artistName: 'Ella Stone', eventDate: '2025-04-05', status: 'Pending' },
-        { eventId: 'E005', artistId: 'A005', eventName: 'Acoustic Evenings', artistName: 'Jayden Cross', eventDate: '2025-05-01', status: 'Approved' },
-        { eventId: 'E006', artistId: 'A006', eventName: 'Jazz Nights', artistName: 'Maya Rivers', eventDate: '2025-04-15', status: 'Declined' },
-      ];
-      setArtistBookingRequests(requests);
+    const fetchAll = async () => {
+      try {
+        const [calRes, insRes, evRes, offRes] = await Promise.all([
+          axios.get('http://localhost:5000/api/event/calendar', headers),
+          axios.get('http://localhost:5000/api/event/insights', headers),
+          axios.get('http://localhost:5000/api/event', headers),
+          axios.get('http://localhost:5000/api/offer', headers),
+        ]);
+        setCalendarEvents(calRes.data);
+        setInsights(insRes.data);
+        setEvents(evRes.data);
+        setBookingRequests(
+          offRes.data.map((o) => ({
+            id: o._id,
+            eventId: o.eventId._id,
+            eventName: o.eventId.title,
+            ownerName: o.owner.name,
+            date: o.date,
+            status: o.status,
+          }))
+        );
+      } catch (err) {
+        console.error(err);
+        setMessage({ error: 'Failed to load data.', success: '' });
+      }
     };
-
-    // Simulate fetching band booking requests from the backend
-    const fetchBandBookingRequests = async () => {
-      const requests = [
-        { eventId: 'E001', bandId: 'B001', eventName: 'Music Festival', bandName: 'Silver Echo', eventDate: '2025-05-01', status: 'Pending' }, 
-        { eventId: 'E002', bandId: 'B002', eventName: 'DJ Madness', bandName: 'Neon Horizon', eventDate: '2025-04-15', status: 'Approved' },
-        { eventId: 'E003', bandId: 'B003', eventName: 'Rock the Night', bandName: 'Velvet Vibes', eventDate: '2025-04-10', status: 'Declined' },
-        { eventId: 'E004', bandId: 'B004', eventName: 'Summer Beats Festival', bandName: 'The Rockers', eventDate: '2025-04-05', status: 'Pending' },
-        { eventId: 'E005', bandId: 'B005', eventName: 'Acoustic Evenings', bandName: 'The Acoustics', eventDate: '2025-05-01', status: 'Approved' },
-        { eventId: 'E006', bandId: 'B006', eventName: 'Jazz Nights', bandName: 'Jazz Masters', eventDate: '2025-04-15', status: 'Declined' },
-      ];
-      setBandBookingRequests(requests);
-    };
-
-    const fetchLightingTeamBookingRequests = async () => {
-      const requests = [
-        { eventId: 'E001', lightingId: 'L001', eventName: 'Music Festival', lightingName: 'Bright Lights Co.', eventDate: '2025-05-01', status: 'Pending' },
-        { eventId: 'E002', lightingId: 'L002', eventName: 'DJ Madness', lightingName: 'Neon Glow', eventDate: '2025-04-15', status: 'Approved' },
-        { eventId: 'E003', lightingId: 'L003', eventName: 'Rock the Night', lightingName: 'Stage Beamers', eventDate: '2025-04-10', status: 'Declined' },
-        { eventId: 'E004', lightingId: 'L004', eventName: 'Summer Beats Festival', lightingName: 'Event Illumination', eventDate: '2025-04-05', status: 'Pending' },
-        { eventId: 'E005', lightingId: 'L005', eventName: 'Acoustic Evenings', lightingName: 'Soft Glow Lighting', eventDate: '2025-05-01', status: 'Approved' },
-        { eventId: 'E006', lightingId: 'L006', eventName: 'Jazz Nights', lightingName: 'Ambient Lights', eventDate: '2025-04-15', status: 'Declined' },
-      ];
-      setLightingTeamBookingRequests(requests);
-    };
-
-    const fetchSoundTeamBookingRequests = async () => {
-      const requests = [
-        { eventId: 'E001', soundId: 'S001', eventName: 'Music Festival', soundName: 'Echo Sound Systems', eventDate: '2025-05-01', status: 'Pending' },
-        { eventId: 'E002', soundId: 'S002', eventName: 'DJ Madness', soundName: 'Bass Boost Audio', eventDate: '2025-04-15', status: 'Approved' },
-        { eventId: 'E003', soundId: 'S003', eventName: 'Rock the Night', soundName: 'Rock Sound Crew', eventDate: '2025-04-10', status: 'Declined' },
-        { eventId: 'E004', soundId: 'S004', eventName: 'Summer Beats Festival', soundName: 'Wave Audio Systems', eventDate: '2025-04-05', status: 'Pending' },
-        { eventId: 'E005', soundId: 'S005', eventName: 'Acoustic Evenings', soundName: 'Harmony Sound', eventDate: '2025-05-01', status: 'Approved' },
-        { eventId: 'E006', soundId: 'S006', eventName: 'Jazz Nights', soundName: 'Smooth Sound Co.', eventDate: '2025-04-15', status: 'Declined' },
-      ];
-      setSoundTeamBookingRequests(requests);
-    };
-
-    const fetchStageTeamBookingRequests = async () => {
-      const requests = [
-        { eventId: 'E001', stageId: 'ST001', eventName: 'Music Festival', stageName: 'Grand Stage Co.', eventDate: '2025-05-01', status: 'Pending' },
-        { eventId: 'E002', stageId: 'ST002', eventName: 'DJ Madness', stageName: 'Neon Stage Setup', eventDate: '2025-04-15', status: 'Approved' },
-        { eventId: 'E003', stageId: 'ST003', eventName: 'Rock the Night', stageName: 'Rock Arena', eventDate: '2025-04-10', status: 'Declined' },
-        { eventId: 'E004', stageId: 'ST004', eventName: 'Summer Beats Festival', stageName: 'Beach Stage Creations', eventDate: '2025-04-05', status: 'Pending' },
-        { eventId: 'E005', stageId: 'ST005', eventName: 'Acoustic Evenings', stageName: 'Harmony Stage', eventDate: '2025-05-01', status: 'Approved' },
-        { eventId: 'E006', stageId: 'ST006', eventName: 'Jazz Nights', stageName: 'Smooth Stage Co.', eventDate: '2025-04-15', status: 'Declined' },
-      ];
-      setStageTeamBookingRequests(requests);
-    };
-
-    const fetchSecurityTeamBookingRequests = async () => {
-      const requests = [
-        { eventId: 'E001', securityId: 'SEC001', eventName: 'Music Festival', securityName: 'SafeGuard Security', eventDate: '2025-05-01', status: 'Pending' },
-        { eventId: 'E002', securityId: 'SEC002', eventName: 'DJ Madness', securityName: 'Elite Security Services', eventDate: '2025-04-15', status: 'Approved' },
-        { eventId: 'E003', securityId: 'SEC003', eventName: 'Rock the Night', securityName: 'Rock Solid Security', eventDate: '2025-04-10', status: 'Declined' },
-        { eventId: 'E004', securityId: 'SEC004', eventName: 'Summer Beats Festival', securityName: 'Beach Security Co.', eventDate: '2025-04-05', status: 'Pending' },
-        { eventId: 'E005', securityId: 'SEC005', eventName: 'Acoustic Evenings', securityName: 'Harmony Security', eventDate: '2025-05-01', status: 'Approved' },
-        { eventId: 'E006', securityId: 'SEC006', eventName: 'Jazz Nights', securityName: 'Smooth Security Services', eventDate: '2025-04-15', status: 'Declined' },
-      ];
-      setSecurityTeamBookingRequests(requests);
-    };
-
-    const fetchSponsorBookingRequests = async () => {
-      const requests = [
-        { eventId: 'E001', sponsorId: 'SP001', eventName: 'Music Festival', sponsorName: 'Global Music Inc.', eventDate: '2025-05-01', status: 'Pending' },
-        { eventId: 'E002', sponsorId: 'SP002', eventName: 'DJ Madness', sponsorName: 'Neon Sponsors', eventDate: '2025-04-15', status: 'Approved' },
-        { eventId: 'E003', sponsorId: 'SP003', eventName: 'Rock the Night', sponsorName: 'Rock Solid Sponsors', eventDate: '2025-04-10', status: 'Declined' },
-        { eventId: 'E004', sponsorId: 'SP004', eventName: 'Summer Beats Festival', sponsorName: 'Beachside Sponsors', eventDate: '2025-04-05', status: 'Pending' },
-        { eventId: 'E005', sponsorId: 'SP005', eventName: 'Acoustic Evenings', sponsorName: 'Harmony Sponsors', eventDate: '2025-05-01', status: 'Approved' },
-        { eventId: 'E006', sponsorId: 'SP006', eventName: 'Jazz Nights', sponsorName: 'Smooth Jazz Sponsors', eventDate: '2025-04-15', status: 'Declined' },
-      ];
-      setSponsorBookingRequests(requests);
-    };
-
-    const fetchDesignerBookingRequests = async () => {
-      const requests = [
-        { eventId: 'E001', designerId: 'D001', eventName: 'Music Festival', designerName: 'Creative Designs Co.', eventDate: '2025-05-01', status: 'Pending' },
-        { eventId: 'E002', designerId: 'D002', eventName: 'DJ Madness', designerName: 'Neon Design Studio', eventDate: '2025-04-15', status: 'Approved' },
-        { eventId: 'E003', designerId: 'D003', eventName: 'Rock the Night', designerName: 'Rock Art Designs', eventDate: '2025-04-10', status: 'Declined' },
-        { eventId: 'E004', designerId: 'D004', eventName: 'Summer Beats Festival', designerName: 'Beachside Creatives', eventDate: '2025-04-05', status: 'Pending' },
-        { eventId: 'E005', designerId: 'D005', eventName: 'Acoustic Evenings', designerName: 'Harmony Design Studio', eventDate: '2025-05-01', status: 'Approved' },
-        { eventId: 'E006', designerId: 'D006', eventName: 'Jazz Nights', designerName: 'Smooth Jazz Designs', eventDate: '2025-04-15', status: 'Declined' },
-      ];
-      setDesignerBookingRequests(requests);
-    };
-
-    fetchArtistBookingRequests();
-    fetchBandBookingRequests();
-    fetchLightingTeamBookingRequests();
-    fetchSoundTeamBookingRequests();
-    fetchStageTeamBookingRequests();
-    fetchSecurityTeamBookingRequests();
-    fetchSponsorBookingRequests();
-    fetchDesignerBookingRequests();
+    fetchAll();
   }, []);
+
+  // Calendar items with tooltips
+  const calendarItems = [
+    ...events.map((ev) => ({
+      title: `Event: ${ev.title}`,
+      start: new Date(ev.date),
+      end: new Date(ev.date),
+      type: 'event',
+      status: ev.status,
+      tooltip: `ID: ${ev._id}\nTitle: ${ev.title}\nStatus: ${ev.status}\nDate: ${new Date(ev.date).toLocaleString()}`,
+    })),
+    ...bookingRequests.map((br) => ({
+      title: `Offer: ${br.eventName} (${br.ownerName})`,
+      start: new Date(br.date),
+      end: new Date(br.date),
+      type: 'booking',
+      status: br.status,
+      tooltip: `Offer ID: ${br.id}\nEvent: ${br.eventName}\nArtist: ${br.ownerName}\nStatus: ${br.status}\nDate: ${new Date(br.date).toLocaleString()}`,
+    })),
+  ].filter((item) =>
+    calendarFilter === 'all' ? true : item.type === (calendarFilter === 'events' ? 'event' : 'booking')
+  );
+
+  const handleCreateEvent = async (e) => {
+    e.preventDefault();
+    setMessage({ error: '', success: '' });
+    try {
+      await axios.post('http://localhost:5000/api/event/create', form, headers);
+      setMessage({ success: 'Event created successfully.', error: '' });
+      setForm({ title: '', description: '', date: '' });
+      const [evRes, insRes] = await Promise.all([
+        axios.get('http://localhost:5000/api/event', headers),
+        axios.get('http://localhost:5000/api/event/insights', headers),
+      ]);
+      setEvents(evRes.data);
+      setInsights(insRes.data);
+    } catch (err) {
+      console.error(err);
+      setMessage({
+        error: err.response?.data?.msg || 'Failed to create event.',
+        success: '',
+      });
+    }
+  };
+
+  const updateEventStatus = async (id, newStatus) => {
+    try {
+      await axios.put(`http://localhost:5000/api/event/${id}`, { status: newStatus }, headers);
+      setEvents(events.map((ev) => (ev._id === id ? { ...ev, status: newStatus } : ev)));
+      setMessage({ success: 'Event status updated.', error: '' });
+    } catch (err) {
+      console.error(err);
+      setMessage({ error: 'Failed to update event status.', success: '' });
+    }
+  };
+
+  const updateOfferStatus = async (id, newStatus) => {
+    try {
+      await axios.put(`http://localhost:5000/api/offer/${id}`, { status: newStatus }, headers);
+      setBookingRequests(
+        bookingRequests.map((b) => (b.id === id ? { ...b, status: newStatus } : b))
+      );
+      setMessage({ success: 'Offer status updated.', error: '' });
+    } catch (err) {
+      console.error(err);
+      setMessage({ error: 'Failed to update offer status.', success: '' });
+    }
+  };
+
+  // Event styling with icons
+  const eventStyleGetter = (event) => {
+    let backgroundColor;
+    if (event.type === 'event') {
+      switch (event.status) {
+        case 'live':
+          backgroundColor = '#1976d2';
+          break;
+        case 'end':
+          backgroundColor = '#757575';
+          break;
+        case 'cancel':
+          backgroundColor = '#d32f2f';
+          break;
+        default:
+          backgroundColor = '#ffb300';
+      }
+    } else {
+      backgroundColor = event.status === 'approved' ? '#388e3c' : '#f57c00';
+    }
+    return {
+      style: {
+        backgroundColor,
+        borderRadius: '4px',
+        color: '#fff',
+        border: 'none',
+        display: 'flex',
+        alignItems: 'center',
+        padding: '4px 8px',
+      },
+    };
+  };
+
+  // Custom event component with icons
+  const CustomEvent = ({ event }) => (
+    <Tooltip title={event.tooltip} arrow>
+      <Box sx={{ display: 'flex', alignItems: 'center' }}>
+        {event.type === 'event' ? <EventIcon fontSize="small" sx={{ mr: 1 }} /> : <OfferIcon fontSize="small" sx={{ mr: 1 }} />}
+        <Typography variant="body2">{event.title}</Typography>
+      </Box>
+    </Tooltip>
+  );
+
+  // Sorting function
+  const sortData = (data, sortField, sortOrder) => {
+    return [...data].sort((a, b) => {
+      const valA = sortField === 'date' ? new Date(a[sortField]) : a[sortField].toLowerCase();
+      const valB = sortField === 'date' ? new Date(b[sortField]) : b[sortField].toLowerCase();
+      if (valA < valB) return sortOrder === 'asc' ? -1 : 1;
+      if (valA > valB) return sortOrder === 'asc' ? 1 : -1;
+      return 0;
+    });
+  };
+
+  // Filtered and sorted events
+  const filteredEvents = events
+    .filter((ev) => ev.title.toLowerCase().includes(eventSearch.toLowerCase()))
+    .sort((a, b) => sortData([a, b], eventSort.field, eventSort.order)[0] === a ? -1 : 1);
+
+  // Filtered and sorted booking requests
+  const filteredBookingRequests = bookingRequests
+    .filter((br) => br.eventName.toLowerCase().includes(offerSearch.toLowerCase()) || br.ownerName.toLowerCase().includes(offerSearch.toLowerCase()))
+    .sort((a, b) => sortData([a, b], offerSort.field, offerSort.order)[0] === a ? -1 : 1);
+
+  const handleSort = (field, setSort) => {
+    setSort((prev) => ({
+      field,
+      order: prev.field === field && prev.order === 'asc' ? 'desc' : 'asc',
+    }));
+  };
 
   return (
     <div>
-      <OrganizerSidebar />
-      <DashboardHeader />
+      <DashboardHeader userType="organizer" />
+      <div className="organizer-dashboard">
+        <OrganizerSidebar />
+        <div className="dashboard-content">
+          {/* Insights */}
+          <Box sx={{ mb: 4 }}>
+            <Grid container spacing={2}>
+              <Grid item xs={12} sm={6}>
+                <Card sx={{ background: 'linear-gradient(45deg, #1976d2, #42a5f5)' }}>
+                  <CardContent>
+                    <Typography color="white">Total Events</Typography>
+                    <Typography variant="h4" color="white">{insights.totalEvents}</Typography>
+                  </CardContent>
+                </Card>
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <Card sx={{ background: 'linear-gradient(45deg, #388e3c, #66bb6a)' }}>
+                  <CardContent>
+                    <Typography color="white">Total Offers</Typography>
+                    <Typography variant="h4" color="white">{insights.totalOffers}</Typography>
+                  </CardContent>
+                </Card>
+              </Grid>
+            </Grid>
+          </Box>
 
-      <div className= "content-of-the-page">
-        <Card className="card-calendar">
-          <CardContent className="card-content">
-            <h2>Event Calendar</h2>
-            <div className="calendar-container">
-            <SharedCalendar />
-            </div>
-          </CardContent>
-        </Card>
+          {/* Calendar View */}
+          <Box className="calendar-card" sx={{ mb: 4 }}>
+            <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 2 }}>
+              <Typography variant="h5">Event & Offer Calendar</Typography>
+              <ToggleButtonGroup
+                value={calendarFilter}
+                exclusive
+                onChange={(e, newFilter) => newFilter && setCalendarFilter(newFilter)}
+                aria-label="calendar filter"
+              >
+                <ToggleButton value="all" aria-label="all">All</ToggleButton>
+                <ToggleButton value="events" aria-label="events">Events</ToggleButton>
+                <ToggleButton value="offers" aria-label="offers">Offers</ToggleButton>
+              </ToggleButtonGroup>
+            </Box>
+            <Box className="calendar-container">
+              <Calendar
+                localizer={localizer}
+                events={calendarItems}
+                startAccessor="start"
+                endAccessor="end"
+                style={{ height: '500px' }}
+                eventPropGetter={eventStyleGetter}
+                defaultView="month"
+                views={['month', 'week', 'day']}
+                components={{ event: CustomEvent }}
+                aria-label="event and offer calendar"
+              />
+            </Box>
+          </Box>
 
-        <div className="organizer-booking-request-table">
-          <h2>Booking Requests</h2>
+          {/* Create Event */}
+          <Box component="form" onSubmit={handleCreateEvent} sx={{ mb: 4, p: 3, bgcolor: '#fff', borderRadius: 2, boxShadow: 3 }}>
+            <Typography variant="h5" gutterBottom>Create New Event</Typography>
+            {message.error && <Typography color="error" sx={{ mb: 2 }}>{message.error}</Typography>}
+            {message.success && <Typography color="success.main" sx={{ mb: 2 }}>{message.success}</Typography>}
+            <Grid container spacing={2}>
+              <Grid item xs={12} sm={6}>
+                <TextField
+                  label="Title"
+                  fullWidth
+                  margin="normal"
+                  value={form.title}
+                  onChange={(e) => setForm({ ...form, title: e.target.value })}
+                  required
+                  aria-required="true"
+                />
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <TextField
+                  type="datetime-local"
+                  label="Date"
+                  fullWidth
+                  margin="normal"
+                  InputLabelProps={{ shrink: true }}
+                  value={form.date}
+                  onChange={(e) => setForm({ ...form, date: e.target.value })}
+                  required
+                  aria-required="true"
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  label="Description"
+                  fullWidth
+                  multiline
+                  rows={4}
+                  margin="normal"
+                  value={form.description}
+                  onChange={(e) => setForm({ ...form, description: e.target.value })}
+                  required
+                  aria-required="true"
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <Button variant="contained" type="submit" sx={{ mt: 2, transition: 'transform 0.2s', '&:hover': { transform: 'scale(1.05)' } }}>
+                  Create Event
+                </Button>
+              </Grid>
+            </Grid>
+          </Box>
 
-          {/* Artist Bookings Table */}
-          <table className="booking-request-table">
-            <thead>
-              <h3>Artist Bookings</h3>
-              <tr>
-                <th>Event ID</th>
-                <th>Artist Booking ID</th>
-                <th>Event Name</th>
-                <th>Artist Name</th>
-                <th>Event Date</th>
-                <th>Status</th>
-              </tr>
-            </thead>
-            <tbody>
-              {artistBookingRequests.map((request) => (
-                <tr key={request.artistId}>
-                  <td>{request.eventId}</td>
-                  <td>{request.artistId}</td>
-                  <td>{request.eventName}</td>
-                  <td>{request.artistName}</td>
-                  <td>{request.eventDate}</td>
-                  <td>
-                    <span className={`status ${request.status.toLowerCase()}`}>
-                      {request.status}
-                    </span>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+          {/* Events Table */}
+          <Box className="organizer-booking-request-table" sx={{ mb: 4 }}>
+            <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 2 }}>
+              <Typography variant="h5">All Events</Typography>
+              <TextField
+                placeholder="Search events..."
+                value={eventSearch}
+                onChange={(e) => setEventSearch(e.target.value)}
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">
+                      <SearchIcon />
+                    </InputAdornment>
+                  ),
+                }}
+                sx={{ width: 300 }}
+                aria-label="search events"
+              />
+            </Box>
+            <TableContainer component={Paper}>
+              <Table aria-label="events table">
+                <TableHead>
+                  <TableRow>
+                    <TableCell>
+                      <TableSortLabel
+                        active={eventSort.field === 'id'}
+                        direction={eventSort.order}
+                        onClick={() => handleSort('id', setEventSort)}
+                      >
+                        ID
+                      </TableSortLabel>
+                    </TableCell>
+                    <TableCell>
+                      <TableSortLabel
+                        active={eventSort.field === 'title'}
+                        direction={eventSort.order}
+                        onClick={() => handleSort('title', setEventSort)}
+                      >
+                        Title
+                      </TableSortLabel>
+                    </TableCell>
+                    <TableCell>
+                      <TableSortLabel
+                        active={eventSort.field === 'date'}
+                        direction={eventSort.order}
+                        onClick={() => handleSort('date', setEventSort)}
+                      >
+                        Date
+                      </TableSortLabel>
+                    </TableCell>
+                    <TableCell>Status</TableCell>
+                    <TableCell>Action</TableCell>
+                  </TableRow>
+                </TableHead>
+                <TableBody>
+                  {filteredEvents.map((ev) => (
+                    <TableRow key={ev._id} hover sx={{ '&:hover': { bgcolor: '#f1f1f1' } }}>
+                      <TableCell>{ev._id}</TableCell>
+                      <TableCell>{ev.title}</TableCell>
+                      <TableCell>{new Date(ev.date).toLocaleString()}</TableCell>
+                      <TableCell>
+                        <span className={`status status-${ev.status.toLowerCase()}`}>{ev.status}</span>
+                      </TableCell>
+                      <TableCell>
+                        <Select
+                          value={ev.status}
+                          onChange={(e) => updateEventStatus(ev._id, e.target.value)}
+                          size="small"
+                          aria-label={`update status for event ${ev._id}`}
+                        >
+                          <MenuItem value="pending">Pending</MenuItem>
+                          <MenuItem value="live">Live</MenuItem>
+                          <MenuItem value="end">End</MenuItem>
+                          <MenuItem value="cancel">Cancel</MenuItem>
+                        </Select>
+                      </TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </TableContainer>
+          </Box>
 
-          {/* Bands Bookings Table */}
-          <table className="booking-request-table">
-            <thead>
-              <h3>Bands Bookings</h3>
-              <tr>
-                <th>Event ID</th>
-                <th>Band Booking ID</th>
-                <th>Event Name</th>
-                <th>Band Name</th>
-                <th>Event Date</th>
-                <th>Status</th>
-              </tr>
-            </thead>
-            <tbody>
-              {bandBookingRequests.map((request) => (
-                <tr key={request.bandId}>
-                  <td>{request.eventId}</td>
-                  <td>{request.bandId}</td>
-                  <td>{request.eventName}</td>
-                  <td>{request.bandName}</td>
-                  <td>{request.eventDate}</td>
-                  <td>
-                    <span className={`status ${request.status.toLowerCase()}`}>
-                      {request.status}
-                    </span>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-
-          {/* Lighting Bookings Table */}
-          <table className="booking-request-table">
-            <thead>
-              <h3>Lighting Teams Bookings</h3>
-              <tr>
-                <th>Event ID</th>
-                <th>Lighting Team <br/> Booking ID</th>
-                <th>Event Name</th>
-                <th>Lighting Team <br/> Name</th>
-                <th>Event Date</th>
-                <th>Status</th>
-              </tr>
-            </thead>
-            <tbody>
-              {lightingTeamBookingRequests.map((request) => (
-                <tr key={request.lightingId}>
-                  <td>{request.eventId}</td>
-                  <td>{request.lightingId}</td>
-                  <td>{request.eventName}</td>
-                  <td>{request.lightingName}</td>
-                  <td>{request.eventDate}</td>
-                  <td>
-                    <span className={`status ${request.status.toLowerCase()}`}>
-                      {request.status}
-                    </span>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-
-          {/* Sound Bookings Table */}
-          <table className="booking-request-table">
-            <thead>
-              <h3>Sound Teams Bookings</h3>
-              <tr>
-                <th>Event ID</th>
-                <th>Sound Team <br/> Booking ID</th>
-                <th>Event Name</th>
-                <th>Sound Team <br/> Name</th>
-                <th>Event Date</th>
-                <th>Status</th>
-              </tr>
-            </thead>
-            <tbody>
-              {soundTeamBookingRequests.map((request) => (
-                <tr key={request.soundId}>
-                  <td>{request.eventId}</td>
-                  <td>{request.soundId}</td>
-                  <td>{request.eventName}</td>
-                  <td>{request.soundName}</td>
-                  <td>{request.eventDate}</td>
-                  <td>
-                    <span className={`status ${request.status.toLowerCase()}`}>
-                      {request.status}
-                    </span>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-
-          {/* Stage Bookings Table */}
-          <table className="booking-request-table">
-            <thead>
-              <h3>Stage Teams Bookings</h3>
-                <tr>
-                  <th>Event ID</th>
-                  <th>Stage Team Booking ID</th>
-                  <th>Event Name</th>
-                  <th>Stage Team Name</th>
-                  <th>Event Date</th>
-                  <th>Status</th>
-                </tr>
-              </thead>
-              <tbody>
-                {stageTeamBookingRequests.map((request) => (
-                  <tr key={request.stageId}>
-                    <td>{request.eventId}</td>
-                    <td>{request.stageId}</td>
-                    <td>{request.eventName}</td>
-                    <td>{request.stageName}</td>
-                    <td>{request.eventDate}</td>
-                    <td>
-                      <span className={`status ${request.status.toLowerCase()}`}>
-                        {request.status}
-                      </span>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-
-          {/* Security Bookings Table */}
-          <table className="booking-request-table">
-            <thead>
-              <h3>Security Teams Bookings</h3>
-              <tr>
-                <th>Event ID</th>
-                <th>Security Team Booking ID</th>
-                <th>Event Name</th>
-                <th>Security Team Name</th>
-                <th>Event Date</th>
-                <th>Status</th>
-              </tr>
-            </thead>
-            <tbody>
-              {securityTeamBookingRequests.map((request) => (
-                <tr key={request.securityId}>
-                  <td>{request.eventId}</td>
-                  <td>{request.securityId}</td>
-                  <td>{request.eventName}</td>
-                  <td>{request.securityName}</td>
-                  <td>{request.eventDate}</td>
-                  <td>
-                    <span className={`status ${request.status.toLowerCase()}`}>
-                      {request.status}
-                    </span>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-
-          {/* Sponsor Bookings Table */}
-          <table className="booking-request-table">
-            <thead>
-              <h3>Sponsors Bookings</h3>
-              <tr>
-                <th>Event ID</th>
-                <th>Sponsor Booking ID</th>
-                <th>Event Name</th>
-                <th>Sponsor Name</th>
-                <th>Event Date</th>
-                <th>Status</th>
-              </tr>
-            </thead>
-            <tbody>
-              {sponsorBookingRequests.map((request) => (
-                <tr key={request.sponsorId}>
-                  <td>{request.eventId}</td>
-                  <td>{request.sponsorId}</td>
-                  <td>{request.eventName}</td>
-                  <td>{request.sponsorName}</td>
-                  <td>{request.eventDate}</td>
-                  <td>
-                    <span className={`status ${request.status.toLowerCase()}`}>
-                      {request.status}
-                    </span>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-
-          {/* Designer Bookings Table */}
-          <table className="booking-request-table">
-            <thead>
-              <h3>Designers Bookings</h3>
-              <tr>
-                <th>Event ID</th>
-                <th>Designer Booking ID</th>
-                <th>Event Name</th>
-                <th>Designer Name</th>
-                <th>Event Date</th>
-                <th>Status</th>
-              </tr>
-            </thead>
-            <tbody>
-              {designerBookingRequests.map((request) => (
-                <tr key={request.designerId}>
-                  <td>{request.eventId}</td>
-                  <td>{request.designerId}</td>
-                  <td>{request.eventName}</td>
-                  <td>{request.designerName}</td>
-                  <td>{request.eventDate}</td>
-                  <td>
-                    <span className={`status ${request.status.toLowerCase()}`}>
-                      {request.status}
-                    </span>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-
+          {/* Booking Requests Table */}
+          <Box className="organizer-booking-request-table" sx={{ mb: 4 }}>
+            <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 2 }}>
+              <Typography variant="h5">Booking Requests (Artist Offers)</Typography>
+              <TextField
+                placeholder="Search offers..."
+                value={offerSearch}
+                onChange={(e) => setOfferSearch(e.target.value)}
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">
+                      <SearchIcon />
+                    </InputAdornment>
+                  ),
+                }}
+                sx={{ width: 300 }}
+                aria-label="search offers"
+              />
+            </Box>
+            <TableContainer component={Paper}>
+              <Table aria-label="booking requests table">
+                <TableHead>
+                  <TableRow>
+                    <TableCell>
+                      <TableSortLabel
+                        active={offerSort.field === 'eventId'}
+                        direction={offerSort.order}
+                        onClick={() => handleSort('eventId', setOfferSort)}
+                      >
+                        Event ID
+                      </TableSortLabel>
+                    </TableCell>
+                    <TableCell>
+                      <TableSortLabel
+                        active={offerSort.field === 'id'}
+                        direction={offerSort.order}
+                        onClick={() => handleSort('id', setOfferSort)}
+                      >
+                        Offer ID
+                      </TableSortLabel>
+                    </TableCell>
+                    <TableCell>
+                      <TableSortLabel
+                        active={offerSort.field === 'eventName'}
+                        direction={offerSort.order}
+                        onClick={() => handleSort('eventName', setOfferSort)}
+                      >
+                        Event Name
+                      </TableSortLabel>
+                    </TableCell>
+                    <TableCell>
+                      <TableSortLabel
+                        active={offerSort.field === 'ownerName'}
+                        direction={offerSort.order}
+                        onClick={() => handleSort('ownerName', setOfferSort)}
+                      >
+                        Artist Name
+                      </TableSortLabel>
+                    </TableCell>
+                    <TableCell>
+                      <TableSortLabel
+                        active={offerSort.field === 'date'}
+                        direction={offerSort.order}
+                        onClick={() => handleSort('date', setOfferSort)}
+                      >
+                        Date
+                      </TableSortLabel>
+                    </TableCell>
+                    <TableCell>Status</TableCell>
+                    <TableCell>Action</TableCell>
+                  </TableRow>
+                </TableHead>
+                <TableBody>
+                  {filteredBookingRequests.map((b) => (
+                    <TableRow key={b.id} hover sx={{ '&:hover': { bgcolor: '#f1f1f1' } }}>
+                      <TableCell>{b.eventId}</TableCell>
+                      <TableCell>{b.id}</TableCell>
+                      <TableCell>{b.eventName}</TableCell>
+                      <TableCell>{b.ownerName}</TableCell>
+                      <TableCell>{new Date(b.date).toLocaleString()}</TableCell>
+                      <TableCell>
+                        <span className={`status status-${b.status.toLowerCase()}`}>{b.status}</span>
+                      </TableCell>
+                      <TableCell>
+                        <Tooltip title="Approve Offer">
+                          <IconButton
+                            onClick={() => updateOfferStatus(b.id, 'approved')}
+                            color="success"
+                            aria-label={`approve offer ${b.id}`}
+                          >
+                            <CheckCircleIcon />
+                          </IconButton>
+                        </Tooltip>
+                        <Tooltip title="Reject Offer">
+                          <IconButton
+                            onClick={() => updateOfferStatus(b.id, 'rejected')}
+                            color="error"
+                            aria-label={`reject offer ${b.id}`}
+                          >
+                            <CancelIcon />
+                          </IconButton>
+                        </Tooltip>
+                      </TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </TableContainer>
+          </Box>
         </div>
       </div>
     </div>

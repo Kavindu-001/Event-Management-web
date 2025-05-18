@@ -1,6 +1,6 @@
 body.admin-settings-page{
   overflow:scroll;
-  margin-bottom: 200px;
+  margin-bottom: 10px;
   margin-left: 100px;
   overflow-x: hidden;
 }
@@ -105,7 +105,8 @@ body.admin-settings-page{
 
 .settings-actions{
   display: flex;
-  justify-content: space-between;
+  justify-content: row;
+  gap: 30px;
   margin-top: 0px;
   justify-content: center;
   align-items: center;

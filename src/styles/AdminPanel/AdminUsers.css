@@ -3,9 +3,7 @@ body.admin-users-page{
     overflow-y: hidden;
     overflow-x: visible;
     margin-top: 10px;
-    margin-bottom: 150px;
-
-    
+    margin-bottom: 150px;   
 }
 
 .user-activity-list-table {

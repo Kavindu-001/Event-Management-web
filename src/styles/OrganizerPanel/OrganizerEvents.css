@@ -1,154 +1,363 @@
 /* General Page Styling */
 body.organizer-events-page {
-    background-color: #f9f9f9;
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
-    display: flex;
-    height: 100vh;
+  background-color: #f4f6f8;
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+/* Sidebar + Content Layout */
+.organizer-dashboard {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+/* Main Content Area */
+.dashboard-content {
+  flex: 1;
+  padding: 24px;
+  margin-left: 260px;
+  overflow-y: auto;
+  background-color: #f4f6f8;
+}
+
+/* Calendar Card */
+.calendar-card {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto 24px;
+  padding: 24px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s;
+}
+
+.calendar-card:hover {
+  transform: translateY(-2px);
+}
+
+/* Calendar Container */
+.calendar-container {
+  width: 100%;
+  background-color: #ffffff;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* React Big Calendar Styles */
+.rbc-calendar {
+  min-height: 500px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  background-color: #ffffff;
+  font-family: 'Roboto', Arial, sans-serif;
+}
+
+.rbc-toolbar {
+  padding: 12px;
+  background: linear-gradient(to bottom, #f8f9fa, #ffffff);
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.rbc-toolbar-label {
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: #1a3c6e;
+}
+
+.rbc-btn-group button {
+  background-color: #1976d2 !important;
+  color: #fff !important;
+  border: none !important;
+  padding: 8px 16px !important;
+  border-radius: 6px !important;
+  margin: 0 4px;
+  font-size: 0.875rem;
+  transition: background-color 0.2s, transform 0.2s;
+}
+
+.rbc-btn-group button:hover {
+  background-color: #1565c0 !important;
+  transform: scale(1.05);
+}
+
+.rbc-btn-group .rbc-active {
+  background-color: #0d47a1 !important;
+  transform: scale(0.95);
+}
+
+.rbc-event {
+  padding: 6px 10px !important;
+  font-size: 0.875rem !important;
+  border-radius: 6px !important;
+  border: none !important;
+  transition: transform 0.2s;
+}
+
+.rbc-event:hover {
+  transform: scale(1.03);
+}
+
+.rbc-event-label {
+  font-weight: 500;
+}
+
+.rbc-month-view {
+  border: none !important;
+}
+
+.rbc-month-header {
+  background: linear-gradient(to bottom, #f8f9fa, #ffffff);
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.rbc-date-cell {
+  padding: 10px !important;
+  text-align: center;
+  font-size: 0.875rem;
+}
+
+.rbc-day-bg {
+  border: 1px solid #e8ecef !important;
+  transition: background-color 0.2s;
+}
+
+.rbc-day-bg:hover {
+  background-color: #f1f5f9 !important;
+}
+
+.rbc-off-range-bg {
+  background-color: #f9fafb !important;
+}
+
+.rbc-selected {
+  background-color: #e3f2fd !important;
+}
+
+/* Toggle Button Group */
+.MuiToggleButtonGroup-root {
+  background-color: #e8ecef;
+  border-radius: 6px;
+}
+
+.MuiToggleButton-root {
+  text-transform: none;
+  font-size: 0.875rem;
+  padding: 8px 16px;
+  color: #34495e;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.MuiToggleButton-root.Mui-selected {
+  background-color: #1976d2;
+  color: #fff;
+}
+
+.MuiToggleButton-root:hover {
+  background-color: #d0d7de;
+}
+
+/* Insights Cards (already styled in JSX) */
+
+/* Create Event Form */
+.MuiPaper-root form {
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  padding: 24px;
+  transition: transform 0.2s;
+}
+
+.MuiPaper-root form:hover {
+  transform: translateY(-2px);
+}
+
+.MuiTextField-root {
+  margin-bottom: 16px !important;
+}
+
+.MuiButton-contained {
+  background: linear-gradient(45deg, #1976d2, #42a5f5);
+  padding: 10px 24px;
+  border-radius: 6px;
+  text-transform: none;
+  font-weight: 500;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.MuiButton-contained:hover {
+  background: linear-gradient(45deg, #1565c0, #2196f3);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transform: scale(1.05);
+}
+
+/* Booking Request Table Section */
+.organizer-booking-request-table {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto 24px;
+  padding: 24px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  max-height: 500px;
+  overflow-y: auto;
+  overflow-x: auto;
+  transition: transform 0.2s;
+}
+
+.organizer-booking-request-table:hover {
+  transform: translateY(-2px);
+}
+
+.organizer-booking-request-table h2 {
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: #1a3c6e;
+  margin-bottom: 16px;
+}
+
+/* Table Styling */
+.MuiTable-root {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.MuiTableCell-head {
+  background: linear-gradient(to bottom, #f8f9fa, #ffffff);
+  color: #34495e;
+  font-weight: 600;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  padding: 12px;
+}
+
+.MuiTableCell-body {
+  padding: 12px;
+  border-bottom: 1px solid #e8ecef;
+  font-size: 0.875rem;
+  color: #34495e;
+}
+
+.MuiTableRow-root:hover {
+  background-color: #f1f5f9 !important;
+}
+
+/* Status Styling */
+.status {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 12px;
+  border-radius: 16px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: capitalize;
+  color: #fff;
+}
+
+.status-pending {
+  background-color: #ffb300;
+  color: #000;
+}
+
+.status-live {
+  background-color: #1976d2;
+}
+
+.status-end {
+  background-color: #757575;
+}
+
+.status-cancel {
+  background-color: #d32f2f;
+}
+
+.status-approved {
+  background-color: #388e3c;
+}
+
+.status-rejected {
+  background-color: #f57c00;
+}
+
+/* Search Bar */
+.MuiTextField-root .MuiInputBase-root {
+  border-radius: 6px;
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0;
+  transition: border-color 0.2s;
+}
+
+.MuiTextField-root .MuiInputBase-root:hover {
+  border-color: #1976d2;
+}
+
+/* Icon Buttons */
+.MuiIconButton-root {
+  transition: transform 0.2s;
+}
+
+.MuiIconButton-root:hover {
+  transform: scale(1.1);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .dashboard-content {
+    margin-left: 0;
+    padding: 16px;
   }
 
-  .content-of-the-page{
-    margin-top: 670px;
-    margin-left: 50px;
-  }
-  
-  /* Calendar Card */
-  .card-calendar {
-    width: 1200px;
-    height: max-content;
-    display: flex;
-    padding: 10px;
-    border-radius: 12px;
-    margin-left: 260px;
-    margin-right: 0px;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    
-  }
-  
-  .card-content {
-    width: 100%;
-    height: max-content;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-    background-color: #adb5bd;
-    border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-   
-  }
-
-  .calendar-container {
-    display: flex;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #ffffff;
-    border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    position: relative; /* Ensure proper positioning */
-    z-index: 1; /* Lower z-index to stay behind the header */
-  }
-
-  /* Booking Request Table Section */
+  .calendar-card,
   .organizer-booking-request-table {
-    margin: 30px 20px;
-    padding: 20px;
-    background-color: #ffffff;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    margin-left: 260px;
-    margin-right: 0px;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    max-height: 500px; /* Set a fixed height for the table container */
-    max-width: 1200px;
-    overflow-y: auto; /* Enable vertical scrolling */
-    overflow-x: auto; /* Enable horizontal scrolling if needed */
-    border: 2px solid #ddd; /* Add a border around the scrollable area */
+    margin: 0 8px 16px;
+    padding: 16px;
   }
-  
+
+  .rbc-calendar {
+    min-height: 400px;
+  }
+
+  .rbc-toolbar-label {
+    font-size: 1rem;
+  }
+
+  .rbc-btn-group button {
+    padding: 6px 12px !important;
+    font-size: 0.75rem;
+  }
+
+  .rbc-event {
+    font-size: 0.75rem !important;
+    padding: 4px 6px !important;
+  }
+
   .organizer-booking-request-table h2 {
-    font-size: 1.8rem;
-    color: #34495e;
-    margin-bottom: 20px;
+    font-size: 1.25rem;
   }
-  
-  /* Table Styling */
-  .booking-request-table {
-    width: 100%;
-    border-collapse: collapse;
+
+  .MuiTableCell-head,
+  .MuiTableCell-body {
+    padding: 8px;
+    font-size: 0.75rem;
   }
-  
-  .booking-request-table th,
-  .booking-request-table td {
-    padding: 12px 15px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
+
+  .MuiTextField-root {
+    width: 100% !important;
   }
-  
-  .booking-request-table th {
-    background-color: #f8f9fa;
-    color: #555;
-    font-weight: bold;
-    top: 0; /* Stick to the top */
-    z-index: 1; /* Ensure it stays above other content */   
+
+  .MuiToggleButtonGroup-root {
+    flex-wrap: wrap;
   }
-  
-  .booking-request-table tr:nth-child(even) {
-    background-color: #f9f9f9;
+
+  .MuiToggleButton-root {
+    padding: 6px 12px;
+    font-size: 0.75rem;
   }
-  
-  .booking-request-table tr:hover {
-    background-color: #f1f1f1;
-  }
-  
-  /* Status Styling */
-  .status {
-    display: inline-block;
-    padding: 5px 10px;
-    border-radius: 5px;
-    font-weight: bold;
-    text-transform: capitalize;
-    color: white;
-  }
-  
-  .status.pending {
-    background-color: #ffc107; /* Yellow for Pending */
-    color: black;
-  }
-  
-  .status.approved {
-    background-color: #28a745; /* Green for Approved */
-  }
-  
-  .status.declined {
-    background-color: #dc3545; /* Red for Declined */
-  }
-  
-  /* Responsive Design */
-  @media (max-width: 768px) {
-    .card-calendar {
-      width: 100%;
-      margin-left: 0;
-      margin-right: 0;
-    }
-  
-    .organizer-booking-request-table {
-      margin: 20px 10px;
-      padding: 15px;
-    }
-  
-    .booking-request-table th,
-    .booking-request-table td {
-      padding: 10px;
-      font-size: 0.9rem;
-    }
-  
-    .organizer-booking-request-table h2 {
-      font-size: 1.5rem;
-    }
-  }
+}

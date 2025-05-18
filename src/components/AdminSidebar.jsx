@@ -58,7 +58,7 @@ const AdminSidebar = () => {
         <li>
           <Link to="/AdminMail">
             <FaEnvelope className="sidebar-icon" />
-            {!isCollapsed && 'Settings'}
+            {!isCollapsed && 'Mail'}
           </Link>
         </li>
       </ul>

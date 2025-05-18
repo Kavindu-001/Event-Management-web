@@ -1,0 +1,76 @@
+.dashboard-container {
+    position: relative;
+    min-height: 100vh;
+  }
+  
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 240px;
+    height: 100vh;
+    background: #1f2a38;
+    border-right: 1px solid #2c3e50;
+    overflow-y: auto;
+    z-index: 1000;
+  }
+  
+  .main-content {
+    margin-left: 240px;       /* offset by sidebar width */
+    padding: 1.5rem;
+    background: #f9f9f9;
+    min-height: 100vh;
+    overflow-y: auto;
+  }
+  
+  .dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #d1d5db;
+    padding: 1rem;
+    border-radius: 4px;
+    margin-bottom: 1.5rem;
+  }
+  
+  .logout-btn {
+    background: #f56565;
+    border: none;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .logout-btn:hover {
+    opacity: 0.9;
+  }
+  
+  .events-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1rem;
+  }
+  
+  .event-card {
+    background: #fff;
+    border-radius: 4px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+  }
+  
+  .event-card h3 {
+    margin-top: 0;
+  }
+  
+  .event-date {
+    font-weight: bold;
+    margin-top: 0.5rem;
+  }
+  
+  .error {
+    color: #c00;
+  }

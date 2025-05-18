@@ -18,7 +18,7 @@ const NavItem = ({ to, children, className }) => {
 
 const SideBar = ({ userType }) => {
   // Determine the dashboard name based on the userType
-  const dashboardName = userType === 'band' ? 'Band Dashboard' : 'Band Dashboard' ;
+  const dashboardName = userType === 'user' ? 'User Dashboard' : ' Dashboard' ;
 
   return (
     <div className="sidebar-container">
@@ -30,7 +30,7 @@ const SideBar = ({ userType }) => {
         <h4>{dashboardName} <br/> Panel</h4>
       </div>
       <nav className="sidebar-nav">
-        <NavItem to="/BandDashboard">Dashboard</NavItem>
+        
         <NavItem to="/SidebarOverview">Overview</NavItem>
         <NavItem to="/SidebarEvents">Events</NavItem>
         <NavItem to="/SidebarBookings">Bookings</NavItem>
